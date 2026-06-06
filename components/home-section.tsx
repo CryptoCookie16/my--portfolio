@@ -26,7 +26,7 @@ export function HomeSection() {
               rgba(247,243,234,0.95) 94%,
               #f7f3ea                100%
             ),
-            url('/images/hero-bg.jpg')
+            url('/images/hero-bg.JPG')
           `,
           backgroundSize: 'cover',
           backgroundPosition: 'center top',
