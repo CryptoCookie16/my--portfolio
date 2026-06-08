@@ -55,20 +55,24 @@ export default function ResearchDetailPage({
         </div>
 
         {/* ── Field Quote ────────────────────────────────────── */}
-        <div className="mb-20 border-l border-foreground/30 pl-8">
-          <p className="text-xl md:text-2xl font-light italic leading-relaxed text-foreground/85">
-            &ldquo;{content.quote}&rdquo;
-          </p>
-          <p className="mt-5 font-mono text-[9px] tracking-[0.2em] uppercase text-muted-foreground">
-            — {content.quoteSource}
-          </p>
-        </div>
+        {content.quote && (
+          <div className="mb-20 border-l border-foreground/30 pl-8">
+            <p className="text-xl md:text-2xl font-light italic leading-relaxed text-foreground/85">
+              &ldquo;{content.quote}&rdquo;
+            </p>
+            <p className="mt-5 font-mono text-[9px] tracking-[0.2em] uppercase text-muted-foreground">
+              — {content.quoteSource}
+            </p>
+          </div>
+        )}
 
         {/* ── Abstract ───────────────────────────────────────── */}
-        <div className="mb-6">
-          <p className="text-base leading-[1.9] text-foreground/80">
-            {content.abstract}
-          </p>
+        <div className="mb-6 space-y-5">
+          {content.abstract.split("\n\n").map((para, i) => (
+            <p key={i} className="text-base leading-[1.9] text-foreground/80">
+              {para}
+            </p>
+          ))}
         </div>
         <p className="font-mono text-[9px] tracking-[0.2em] uppercase text-muted-foreground mb-20">
           {content.publication}

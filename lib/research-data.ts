@@ -61,35 +61,23 @@ export const researchDetails: ResearchDetail[] = [
   {
     id: "where-ferns-touch-flesh",
     en: {
-      quote:
-        "Zheng Bo does not represent the fern — he enters into relation with it. The work refuses the distance that representation requires.",
-      quoteSource: "Conference paper draft, UCSD Graduate Conference, 2026",
+      quote: "",
+      quoteSource: "",
       abstract:
-        "This paper reads Zheng Bo's Pteridophilia series through three theoretical lenses: posthumanism's critique of human exceptionalism, queer ecology's refusal of reproductive futurism, and affect theory's insistence on the body as a site of political knowledge. The work — in which the artist lies naked among ferns for extended durations — is analyzed not as spectacle but as a practice of interspecies intimacy that troubles the boundary between the erotic and the ecological.",
-      publication: "Presented at UCSD Graduate Conference, May 2026",
-      excerpts: [
-        {
-          label: "Excerpt",
-          body: "[Paper excerpt — in progress. This block will hold a close-reading passage from the conference paper: an analysis of a specific scene from Pteridophilia, or a moment where affect theory and queer ecology converge. Approximately 200–300 words.]",
-        },
-      ],
+        "What happens when a man makes love to a fern — and then eats it? Zheng Bo's video installation Pteridophilia (2016–ongoing) stages exactly this encounter, filmed in the subtropical forests of Taiwan. At first glance, the work seems to offer a posthuman fantasy of liberated interspecies intimacy. On closer analysis, it raises harder questions about desire, use, and the limits of human perception.\n\nThis paper argues that the fern in Pteridophilia is not abstract nature. It is a historically situated plant — shaped by Indigenous Amis food knowledge, Japanese colonial botanical hierarchies, Kuomintang survival politics, and nationalist floral symbolism. By eroticizing a plant that Taiwanese audiences recognize as food, Zheng does not merely shock. He exposes how narrow the accepted forms of human-plant relation have become.\n\nThe paper's central claim is that the work offers neither a solution nor a celebration, but what I call proximity without appropriation: a practice of staying close to what cannot be fully known or possessed. To touch the fern is not to possess it. To desire the fern is not to know what it wants.",
+      publication: "Presented at the UCSD Department of Literature Graduate Conference, May 2026",
+      excerpts: [],
       images: [
         { src: "", caption: "[Zheng Bo, Pteridophilia — still or documentation image]" },
       ],
     },
     zh: {
-      quote:
-        "郑波不是在再现蕨，而是在与它建立关系。这件作品拒绝了再现所要求的距离感。",
-      quoteSource: "会议论文草稿，加州大学圣地亚哥分校研究生会议，2026年",
+      quote: "",
+      quoteSource: "",
       abstract:
-        "本文通过三个理论维度解读郑波的《蕨恋》系列：后人类主义对人类例外论的批判、酷儿生态学对繁殖未来主义的抵拒，以及情动理论对身体作为政治知识场域的坚持。艺术家长时间裸卧于蕨类之间的行为，在本文中被理解为一种跨物种的亲密性实践，而非奇观——它扰动了欲望与生态之间的边界。",
-      publication: "发表于加州大学圣地亚哥分校研究生学术会议，2026年5月",
-      excerpts: [
-        {
-          label: "摘录",
-          body: "【论文摘录——构思中。此处将收录论文中对《蕨恋》某一具体场景的细读段落，或情动理论与酷儿生态学交汇的论述节点。约200至300字。】",
-        },
-      ],
+        "当一个人抚摸一株蕨类植物——然后将它吃掉，这意味着什么？郑波的录像装置《蕨恋》（2016年至今）在台湾的亚热带森林中拍摄，呈现了正是这样一种相遇。乍看之下，这件作品似乎提供了一种后人类式的跨物种亲密幻想。细读之下，它提出了更困难的问题：关于欲望、使用，以及人类感知的边界。\n\n本文认为，《蕨恋》中的蕨类植物并非抽象的"自然"。它是一种有历史位置的植物——被阿美族的饮食知识、日本殖民时期的植物学等级制度、国民党的生存政治，以及民族主义的花卉象征所共同塑造。通过将台湾观众熟悉的食用植物情色化，郑波不只是在制造震惊——他揭示了人类与植物之间被接受的关系形式是多么狭窄。\n\n本文的核心主张是：这件作品既不提供解决方案，也不构成庆祝，而是提供一种我称之为"接近而不占有"（proximity without appropriation）的伦理姿态——一种与无法被完全认知或占有之物保持靠近的实践。触碰蕨类，并不意味着拥有它。渴望蕨类，并不意味着知道它想要什么。",
+      publication: "发表于2026年5月加州大学圣地亚哥分校文学系研究生学术会议",
+      excerpts: [],
       images: [
         { src: "", caption: "【郑波，《蕨恋》——静帧或现场文献图像】" },
       ],
@@ -98,36 +86,24 @@ export const researchDetails: ResearchDetail[] = [
   {
     id: "roadside-shrines-hong-kong",
     en: {
-      quote:
-        "Every shrine is a refusal — a small, insistent claim that this place is not empty, not forgotten, not yet absorbed.",
-      quoteSource: "Essay draft, 2023",
+      quote: "",
+      quoteSource: "",
       abstract:
-        "This essay examines Hong Kong's roadside shrines as vernacular sacred spaces that operate through what de Certeau calls the 'tactics of the everyday.' Rather than monumental or institutionally sanctioned religion, these small altars — tucked into stairwells, beneath flyovers, along drainage channels — enact a low-frequency religiosity that persists against urbanization, bureaucratic erasure, and the compression of public space.",
+        "Walk through almost any neighborhood in Hong Kong and you will find them: small red shrines tucked beneath staircases, wedged into street corners, standing exposed on busy sidewalks. No walls. No gates. No separation from the traffic, the noise, the exhaust fans of neighboring restaurants. By most accounts of how sacred space works, these shrines should not exist — or at least, should not feel sacred. The dominant theories in religious studies hold that the holy requires demarcation from the profane: a threshold, a boundary, an enclosure that separates the sacred from the ordinary world around it.\n\nHong Kong's roadside shrines refuse this logic entirely.\n\nThis paper asks a simple question: what sustains a sacred space without boundaries? Taking several Hong Kong shrines as its central objects — including a shrine to a beloved Chinese medicine practitioner on Peel Street, maintained continuously since his death and relocated when its building was demolished in 1967 — I argue that these sites maintain their sacred character not through enclosure but through accumulation: the daily bodily practices of custodians who sweep and offer incense, the tactical occupation of spaces that urban planning forgot to regulate, and the way these shrines quietly insert an alternative worldview — one of inhabited land, moral memory, and communal connection — into the sensory experience of even the most secular passerby.\n\nThe result is a form of sacred space that is porous rather than defensive, relational rather than bounded, and sustained by practice rather than architecture. In a city defined by rapid redevelopment and the logic of capital, these small shrines turn out to be some of the most durable things around.",
       publication: "Essay, unpublished, 2023",
-      excerpts: [
-        {
-          label: "Field Observation",
-          body: "[Essay excerpt — in progress. This block will hold a passage from the essay: a close description of a specific shrine and its surroundings, or a theoretical passage on sacred space and urban tactics. Approximately 200–300 words.]",
-        },
-      ],
+      excerpts: [],
       images: [
         { src: "", caption: "[Field photograph — roadside shrine, Hong Kong]" },
         { src: "", caption: "[Field photograph — altar detail]" },
       ],
     },
     zh: {
-      quote:
-        "每一座神龛都是一种抗拒——一个细小而执拗的宣告：这里并非虚空，并未被遗忘，尚未被吞并。",
-      quoteSource: "文章草稿，2023年",
+      quote: "",
+      quoteSource: "",
       abstract:
-        "本文将香港路边神龛视为德塞托所谓「日常策略」意义上的民间圣域加以审视。有别于纪念碑式或经制度认可的宗教形态，这些嵌于楼梯间、高架桥下、排水沟旁的小祭坛，以一种低频的宗教性持续运作，在城市化、行政清除与公共空间压缩的重重压力下坚韧存续。",
+        "走过香港几乎任何一个街区，你都会遇见它们：藏在楼梯底下的小红龛，楔入街道转角的神位，毫无遮蔽地立在喧嚣的人行道上。没有围墙，没有门槛，与周围的车流、噪音、餐厅抽风扇之间没有任何隔断。按照大多数关于神圣空间的理论，这些神龛不应该存在——或者至少，不应该让人感到神圣。宗教研究的主流理论认为，神圣性需要与世俗世界的分隔：一道门槛，一条边界，一堵将神圣从日常中隔离出来的围墙。\n\n香港的路边神龛彻底拒绝了这个逻辑。\n\n这篇论文提出一个简单的问题：没有边界的神圣空间，靠什么维持？以香港数座神龛为核心研究对象——包括中环卑利街一位深受街坊爱戴的中医去世后由社区建立的伯公庙，1967年因旧楼拆卸被迫迁址后延续至今——我论证这些场所的神圣性并非依赖围合，而是依赖积累：守护者日复一日清扫、点香的身体实践；对城市规划遗忘的边角地带的战术性占用；以及这些神龛如何悄悄地将另一套宇宙观——关于有灵的土地、道德的记忆、社群的连结——植入每一个路过者的感官体验，哪怕他们毫无宗教信仰。\n\n最终呈现的，是一种多孔而非防御性的、关系性而非边界性的、由实践而非建筑维系的神圣空间形态。在一座以快速重建和资本逻辑著称的城市里，这些小小的神龛，是最经久不衰的存在之一。",
       publication: "文章，未发表，2023年",
-      excerpts: [
-        {
-          label: "田野观察",
-          body: "【文章摘录——构思中。此处将收录一段对某座具体神龛及其周边环境的细致描述，或关于圣域与城市策略的理论段落。约200至300字。】",
-        },
-      ],
+      excerpts: [],
       images: [
         { src: "", caption: "【田野照片 — 香港路边神龛】" },
         { src: "", caption: "【田野照片 — 祭坛细节】" },
