@@ -98,7 +98,7 @@ export const dict = {
           subtitle:
             "Creative nonfiction structured around a self-designed Smell Rehabilitation Checklist.",
           filmType: "Essay",
-          previewImage: "",
+          previewImage: "/images/creative/breathing.JPG",
         },
       ],
     },
