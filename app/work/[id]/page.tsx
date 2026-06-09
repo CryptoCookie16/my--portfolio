@@ -64,23 +64,45 @@ export default function WorkDetailPage({
 
       {/* ── Gallery ──────────────────────────────────────────── */}
       <div className="max-w-4xl mx-auto px-6">
-        <div className="columns-1 sm:columns-2 gap-6 space-y-6">
-          {content.images.map((img, i) => (
-            <figure key={i} className="break-inside-avoid">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={img.src}
-                alt={img.caption ?? `${content.title} ${i + 1}`}
-                className="w-full object-cover"
-                loading="lazy"
-              />
-              {img.caption && (
-                <figcaption className="mt-2 font-mono text-[9px] tracking-[0.15em] uppercase text-muted-foreground">
-                  {img.caption}
-                </figcaption>
-              )}
-            </figure>
-          ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-start">
+          {/* Left column: even-indexed images */}
+          <div className="flex flex-col gap-6">
+            {content.images.filter((_, i) => i % 2 === 0).map((img, i) => (
+              <figure key={i}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={img.src}
+                  alt={img.caption ?? `${content.title} ${i * 2 + 1}`}
+                  className="w-full object-cover"
+                  loading="lazy"
+                />
+                {img.caption && (
+                  <figcaption className="mt-2 font-mono text-[9px] tracking-[0.15em] uppercase text-muted-foreground">
+                    {img.caption}
+                  </figcaption>
+                )}
+              </figure>
+            ))}
+          </div>
+          {/* Right column: odd-indexed images, offset downward */}
+          <div className="flex flex-col gap-6 sm:mt-16">
+            {content.images.filter((_, i) => i % 2 === 1).map((img, i) => (
+              <figure key={i}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={img.src}
+                  alt={img.caption ?? `${content.title} ${i * 2 + 2}`}
+                  className="w-full object-cover"
+                  loading="lazy"
+                />
+                {img.caption && (
+                  <figcaption className="mt-2 font-mono text-[9px] tracking-[0.15em] uppercase text-muted-foreground">
+                    {img.caption}
+                  </figcaption>
+                )}
+              </figure>
+            ))}
+          </div>
         </div>
 
         {/* partial note */}
