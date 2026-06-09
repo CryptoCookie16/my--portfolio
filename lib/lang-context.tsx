@@ -81,7 +81,7 @@ export const dict = {
           subtitle:
             "An independent public writing project combining original poetry and tarot imagery.",
           filmType: "Digital",
-          previewImage: "",
+          previewImage: "/images/creative/POEM TAROT/8012.jpg",
         },
         {
           id: "field-ferment-zine",
@@ -186,7 +186,7 @@ export const dict = {
           title: "诗塔罗",
           subtitle: "融合原创诗歌与塔罗意象的独立写作计划。",
           filmType: "数字",
-          previewImage: "",
+          previewImage: "/images/creative/POEM TAROT/8012.jpg",
         },
         {
           id: "field-ferment-zine",

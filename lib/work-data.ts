@@ -52,6 +52,30 @@ export const workDetails: WorkDetail[] = [
       ],
     },
   },
+  {
+    id: "poem-tarot",
+    heroImage: "/images/creative/POEM TAROT/8012.jpg",
+    en: {
+      title: "Poem Tarot",
+      description: "Poem Tarot is a roaming public writing practice. We set up at street markets and public spaces—Hong Kong's Central Market among them—reading tarot for strangers, selling handwritten poems, and bringing photographs along.\n\nStarted in 2022. Our cards are born from the original poetry and images of two makers. The practice moves between divination and literature.\n\nOngoing. Hong Kong and beyond.",
+      images: [
+        { src: "/images/creative/POEM TAROT/29383be1dad830bd1c16bdce1fbd77.JPG" },
+        { src: "/images/creative/POEM TAROT/5e096d481d0e536f418f0e2573975f.JPG" },
+        { src: "/images/creative/POEM TAROT/a91efc0fa53d10244d693ce8a9ed4d.JPG" },
+        { src: "/images/creative/POEM TAROT/d35bb0529923a315e1b3537635ec58.JPG" },
+      ],
+    },
+    zh: {
+      title: "诗塔罗",
+      description: "诗塔罗是一个流动的公共写作计划。我们在街市和公共空间摆摊，比如香港中环市集，为陌生人读牌、售卖手写诗、也带着摄影作品。\n\n始于2022年。我们的牌面诞生于两位制作者的原创诗歌与影像，这个实践游走于占卜与文学之间。\n\n持续进行中。香港及其他地方。",
+      images: [
+        { src: "/images/creative/POEM TAROT/29383be1dad830bd1c16bdce1fbd77.JPG" },
+        { src: "/images/creative/POEM TAROT/5e096d481d0e536f418f0e2573975f.JPG" },
+        { src: "/images/creative/POEM TAROT/a91efc0fa53d10244d693ce8a9ed4d.JPG" },
+        { src: "/images/creative/POEM TAROT/d35bb0529923a315e1b3537635ec58.JPG" },
+      ],
+    },
+  },
 ]
 
 export function getWorkDetail(id: string): WorkDetail | undefined {

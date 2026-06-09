@@ -53,13 +53,17 @@ export default function WorkDetailPage({
       </div>
 
       {/* ── Title ────────────────────────────────────────────── */}
-      <div className="max-w-4xl mx-auto px-6 pt-10 pb-16">
-        <h1 className="text-4xl md:text-5xl font-light tracking-wide mb-3">
+      <div className="max-w-2xl mx-auto px-6 pt-10 pb-16">
+        <h1 className="text-4xl md:text-5xl font-light tracking-wide mb-8">
           {content.title}
         </h1>
-        <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-muted-foreground">
-          {content.description}
-        </p>
+        <div className="space-y-4">
+          {content.description.split("\n\n").map((para, i) => (
+            <p key={i} className="text-base leading-[1.9] text-foreground/80">
+              {para}
+            </p>
+          ))}
+        </div>
       </div>
 
       {/* ── Gallery ──────────────────────────────────────────── */}
