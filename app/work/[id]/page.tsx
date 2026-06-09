@@ -63,8 +63,8 @@ export default function WorkDetailPage({
       </div>
 
       {/* ── Gallery ──────────────────────────────────────────── */}
-      <div className="max-w-5xl mx-auto px-6">
-        <div className="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4">
+      <div className="max-w-4xl mx-auto px-6">
+        <div className="columns-1 sm:columns-2 gap-6 space-y-6">
           {content.images.map((img, i) => (
             <figure key={i} className="break-inside-avoid">
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -82,6 +82,11 @@ export default function WorkDetailPage({
             </figure>
           ))}
         </div>
+
+        {/* partial note */}
+        <p className="mt-16 text-center font-mono text-[9px] tracking-[0.25em] uppercase text-muted-foreground/50">
+          — A selection of works —
+        </p>
       </div>
 
     </main>

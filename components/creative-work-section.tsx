@@ -38,14 +38,23 @@ export function CreativeWorkSection() {
                       <div
                         className={`${layout.aspectRatio} bg-foreground/10 relative overflow-hidden transition-all duration-500 group-hover:bg-foreground/15`}
                       >
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="text-center">
-                            <span className="block w-12 h-12 border border-foreground/30 mx-auto mb-2 group-hover:border-foreground/50 transition-colors" />
-                            <span className="font-mono text-[8px] tracking-[0.2em] uppercase text-muted-foreground">
-                              {project.filmType}
-                            </span>
+                        {project.previewImage ? (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img
+                            src={project.previewImage}
+                            alt={project.title}
+                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                        ) : (
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="text-center">
+                              <span className="block w-12 h-12 border border-foreground/30 mx-auto mb-2 group-hover:border-foreground/50 transition-colors" />
+                              <span className="font-mono text-[8px] tracking-[0.2em] uppercase text-muted-foreground">
+                                {project.filmType}
+                              </span>
+                            </div>
                           </div>
-                        </div>
+                        )}
                       </div>
                     </div>
                     <figcaption className="mt-4">

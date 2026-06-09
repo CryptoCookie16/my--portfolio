@@ -73,6 +73,7 @@ export const dict = {
           title: "Film Photography",
           subtitle: "Black and white analog photography shot on 35mm film.",
           filmType: "35mm",
+          previewImage: "/images/creative/film/Capture One Catalog0033.jpg",
         },
         {
           id: "poem-tarot",
@@ -80,6 +81,7 @@ export const dict = {
           subtitle:
             "An independent public writing project combining original poetry and tarot imagery.",
           filmType: "Digital",
+          previewImage: "",
         },
         {
           id: "field-ferment-zine",
@@ -87,6 +89,7 @@ export const dict = {
           subtitle:
             "Fieldwork interviews at Duke Farm and NC Chinese-operated farms, exploring fermentation, memory, and minority food culture.",
           filmType: "Zine",
+          previewImage: "",
         },
         {
           id: "eulogy-for-breathing",
@@ -94,6 +97,7 @@ export const dict = {
           subtitle:
             "Creative nonfiction structured around a self-designed Smell Rehabilitation Checklist.",
           filmType: "Essay",
+          previewImage: "",
         },
       ],
     },
@@ -175,12 +179,14 @@ export const dict = {
           title: "胶片摄影",
           subtitle: "以35毫米胶卷拍摄的黑白模拟影像。",
           filmType: "35mm",
+          previewImage: "/images/creative/film/Capture One Catalog0033.jpg",
         },
         {
           id: "poem-tarot",
           title: "诗塔罗",
           subtitle: "融合原创诗歌与塔罗意象的独立写作计划。",
           filmType: "数字",
+          previewImage: "",
         },
         {
           id: "field-ferment-zine",
@@ -188,12 +194,14 @@ export const dict = {
           subtitle:
             "在杜克农场及北卡罗来纳州华裔农场进行的田野访谈，探索发酵、记忆与少数族裔饮食文化。",
           filmType: "独立刊物",
+          previewImage: "",
         },
         {
           id: "eulogy-for-breathing",
           title: "呼吸悼词",
           subtitle: "以自制气味康复清单为叙事框架的创意非虚构写作。",
           filmType: "随笔",
+          previewImage: "",
         },
       ],
     },
