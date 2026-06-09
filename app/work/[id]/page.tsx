@@ -28,11 +28,11 @@ export default function WorkDetailPage({
 
   // ── Essay layout (Eulogy for Breathing) ─────────────────
   if (essay) {
-    const essayContent = essay[lang]
+    const essayContent = lang === "zh" ? essay.zh : essay.en
     return (
       <main style={{ background: essay.bgColor, minHeight: "100vh" }} className="pb-40">
         {/* Back navigation */}
-        <div className="px-6 pt-10 pb-6" style={{ maxWidth: "72%", margin: "0 auto" }}>
+        <div className="px-6 pt-10 pb-6" style={{ maxWidth: "58%", margin: "0 auto" }}>
           <Link
             href="/#work"
             className="font-mono text-[10px] tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors"
@@ -42,7 +42,7 @@ export default function WorkDetailPage({
         </div>
 
         {/* Essay content */}
-        <article style={{ maxWidth: "72%", margin: "0 auto", padding: "0 0 4rem" }}>
+        <article style={{ maxWidth: "58%", margin: "0 auto", padding: "0 0 4rem" }}>
           <h1
             style={{
               fontSize: "clamp(2rem, 4vw, 3rem)",
