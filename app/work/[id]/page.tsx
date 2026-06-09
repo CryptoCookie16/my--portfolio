@@ -24,6 +24,101 @@ export default function WorkDetailPage({
   }
 
   const content = detail[lang]
+  const essay = detail.essay
+
+  // ── Essay layout (Eulogy for Breathing) ─────────────────
+  if (essay) {
+    const essayContent = essay[lang]
+    return (
+      <main style={{ background: essay.bgColor, minHeight: "100vh" }} className="pb-40">
+        {/* Back navigation */}
+        <div className="px-6 pt-10 pb-6" style={{ maxWidth: "72%", margin: "0 auto" }}>
+          <Link
+            href="/#work"
+            className="font-mono text-[10px] tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors"
+          >
+            ← {t.nav.work}
+          </Link>
+        </div>
+
+        {/* Essay content */}
+        <article style={{ maxWidth: "72%", margin: "0 auto", padding: "0 0 4rem" }}>
+          <h1
+            style={{
+              fontSize: "clamp(2rem, 4vw, 3rem)",
+              fontWeight: 300,
+              letterSpacing: "0.05em",
+              marginBottom: "3rem",
+              lineHeight: 1.3,
+            }}
+          >
+            {essayContent.title}
+          </h1>
+
+          {/* Paragraphs with fade-out on last one */}
+          <div style={{ position: "relative" }}>
+            {essayContent.paragraphs.map((para, i) => {
+              const isLast = i === essayContent.paragraphs.length - 1
+              return (
+                <p
+                  key={i}
+                  style={{
+                    fontWeight: 300,
+                    lineHeight: 2.2,
+                    marginBottom: "2em",
+                    fontSize: "1rem",
+                    color: "rgba(30,25,20,0.85)",
+                    // drop cap on first paragraph
+                    ...(i === 0 ? { } : {}),
+                  }}
+                  className={i === 0 ? "drop-cap" : ""}
+                >
+                  {para}
+                </p>
+              )
+            })}
+
+            {/* Fade-out mask over last paragraph */}
+            <div
+              style={{
+                position: "absolute",
+                bottom: 0,
+                left: 0,
+                right: 0,
+                height: "160px",
+                background: `linear-gradient(to bottom, transparent, ${essay.bgColor})`,
+                pointerEvents: "none",
+              }}
+            />
+          </div>
+
+          {/* Fade note */}
+          <p
+            style={{
+              fontStyle: "italic",
+              fontSize: "0.75rem",
+              color: "rgba(30,25,20,0.45)",
+              marginTop: "1.5rem",
+              letterSpacing: "0.03em",
+            }}
+          >
+            {essayContent.fadeNote}
+          </p>
+        </article>
+
+        <style>{`
+          .drop-cap::first-letter {
+            float: left;
+            font-size: 3.8em;
+            line-height: 0.75;
+            margin-right: 0.1em;
+            margin-top: 0.08em;
+            font-weight: 300;
+          }
+        `}</style>
+      </main>
+    )
+  }
 
   return (
     <main className="pb-40">
