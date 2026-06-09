@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { Navigation } from "@/components/navigation"
 import { useLang } from "@/lib/lang-context"
 import { getWorkDetail } from "@/lib/work-data"
@@ -59,26 +60,21 @@ export default function WorkDetailPage({
 
           {/* Paragraphs with fade-out on last one */}
           <div style={{ position: "relative" }}>
-            {essayContent.paragraphs.map((para, i) => {
-              const isLast = i === essayContent.paragraphs.length - 1
-              return (
-                <p
-                  key={i}
-                  style={{
-                    fontWeight: 300,
-                    lineHeight: 2.2,
-                    marginBottom: "2em",
-                    fontSize: "1rem",
-                    color: "rgba(30,25,20,0.85)",
-                    // drop cap on first paragraph
-                    ...(i === 0 ? { } : {}),
-                  }}
-                  className={i === 0 ? "drop-cap" : ""}
-                >
-                  {para}
-                </p>
-              )
-            })}
+            {essayContent.paragraphs.map((para, i) => (
+              <p
+                key={i}
+                style={{
+                  fontWeight: 300,
+                  lineHeight: 2.2,
+                  marginBottom: "2em",
+                  fontSize: "1rem",
+                  color: "rgba(30,25,20,0.85)",
+                }}
+                className={i === 0 ? "drop-cap" : ""}
+              >
+                {para}
+              </p>
+            ))}
 
             {/* Fade-out mask over last paragraph */}
             <div
@@ -129,11 +125,13 @@ export default function WorkDetailPage({
       {/* ── Hero ─────────────────────────────────────────────── */}
       <div className="relative h-[70vh] w-full overflow-hidden">
         {detail.heroImage && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
+          <Image
             src={detail.heroImage}
             alt={content.title}
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
           />
         )}
         {/* gradient fade to background */}
@@ -189,12 +187,13 @@ export default function WorkDetailPage({
                     boxShadow: "2px 4px 12px rgba(0,0,0,0.12)",
                   }}
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Image
                     src={img.src}
                     alt={`${content.title} ${i + 1}`}
-                    style={{ width: "100%", display: "block" }}
-                    loading="lazy"
+                    width={0}
+                    height={0}
+                    sizes="46vw"
+                    style={{ width: "100%", height: "auto", display: "block" }}
                   />
                 </div>
               )
@@ -211,12 +210,13 @@ export default function WorkDetailPage({
             <div className="flex flex-col gap-6">
               {content.images.filter((_, i) => i % 2 === 0).map((img, i) => (
                 <figure key={i}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Image
                     src={img.src}
                     alt={img.caption ?? `${content.title} ${i * 2 + 1}`}
-                    className="w-full object-cover"
-                    loading="lazy"
+                    width={0}
+                    height={0}
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                    style={{ width: "100%", height: "auto" }}
                   />
                   {img.caption && (
                     <figcaption className="mt-2 font-mono text-[9px] tracking-[0.15em] uppercase text-muted-foreground">
@@ -230,12 +230,13 @@ export default function WorkDetailPage({
             <div className="flex flex-col gap-6">
               {content.images.filter((_, i) => i % 2 === 1).map((img, i) => (
                 <figure key={i}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Image
                     src={img.src}
                     alt={img.caption ?? `${content.title} ${i * 2 + 2}`}
-                    className="w-full object-cover"
-                    loading="lazy"
+                    width={0}
+                    height={0}
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                    style={{ width: "100%", height: "auto" }}
                   />
                   {img.caption && (
                     <figcaption className="mt-2 font-mono text-[9px] tracking-[0.15em] uppercase text-muted-foreground">

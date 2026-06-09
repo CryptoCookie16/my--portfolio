@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { Navigation } from "@/components/navigation"
 import { useLang } from "@/lib/lang-context"
 import { getResearchDetail } from "@/lib/research-data"
@@ -105,11 +106,12 @@ export default function ResearchDetailPage({
                 <figure key={i}>
                   <div className="aspect-[4/3] bg-foreground/6 border border-foreground/10 flex items-center justify-center">
                     {img.src ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
+                      <Image
                         src={img.src}
                         alt={img.caption}
-                        className="w-full h-full object-cover"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 50vw"
                       />
                     ) : (
                       <span className="font-mono text-[8px] tracking-[0.15em] uppercase text-muted-foreground/40">

@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { useLang } from "@/lib/lang-context"
 
 const workLayout = [
@@ -39,11 +40,14 @@ export function CreativeWorkSection() {
                         className={`${project.previewFull ? "" : layout.aspectRatio} bg-foreground/10 relative overflow-hidden transition-all duration-500 group-hover:bg-foreground/15`}
                       >
                         {project.previewImage ? (
-                          // eslint-disable-next-line @next/next/no-img-element
-                          <img
+                          <Image
                             src={project.previewImage}
                             alt={project.title}
-                            className={`${project.previewFull ? "w-full h-auto block" : "absolute inset-0 w-full h-full object-cover"} transition-transform duration-500 group-hover:scale-105`}
+                            fill={!project.previewFull}
+                            width={project.previewFull ? 800 : undefined}
+                            height={project.previewFull ? 600 : undefined}
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            className={`${project.previewFull ? "w-full h-auto block" : "object-cover"} transition-transform duration-500 group-hover:scale-105`}
                           />
                         ) : (
                           <div className="absolute inset-0 flex items-center justify-center">
