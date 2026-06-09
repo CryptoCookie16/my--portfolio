@@ -203,7 +203,7 @@ export const dict = {
           title: "呼吸悼词",
           subtitle: "以自制气味康复清单为叙事框架的创意非虚构写作。",
           filmType: "随笔",
-          previewImage: "",
+          previewImage: "/images/creative/breathing.JPG",
         },
       ],
     },
