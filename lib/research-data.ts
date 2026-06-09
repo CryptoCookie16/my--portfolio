@@ -22,40 +22,22 @@ export const researchDetails: ResearchDetail[] = [
   {
     id: "fern-fieldwork",
     en: {
-      quote:
-        "The mountain does not offer itself to those who only look. It opens for those who learn to listen with their hands.",
-      quoteSource: "Field note, Gaoligong Mountain, October 2025",
+      quote: "",
+      quoteSource: "",
       abstract:
-        "An ongoing multispecies ethnography conducted in the high-altitude forests of Gaoligong Mountain, Yunnan Province. This research attends to ferns as sensing, relating beings rather than passive botanical specimens — tracing the entanglements between plant life, moisture, altitude, and the bodies of those who move through this terrain. Drawing on sensory ethnography and more-than-human theory, the project asks what it means to do fieldwork alongside rather than about non-human others.",
-      publication: "Ongoing capstone — UC San Diego, Dept. of Anthropology, 2025–2026",
-      excerpts: [
-        {
-          label: "Field Fragment I",
-          body: "[Field diary excerpt — in progress. This block will hold a short passage from fieldwork notes: a moment of encounter, a sensory detail, or a scene that anchors the larger argument. Approximately 200–300 words.]",
-        },
-      ],
-      images: [
-        { src: "", caption: "[Field photograph — Gaoligong Mountain, 2025]" },
-        { src: "", caption: "[Field photograph — specimen detail]" },
-      ],
+        "An ongoing multispecies ethnography conducted in the high-altitude forests of Gaoligong Mountain, Yunnan Province. This research treats ferns as active participants in the world rather than passive botanical specimens — tracing the entanglements between plant life, moisture, altitude, and the people who move through this terrain. Drawing on sensory ethnography and more-than-human theory, the project asks what it means to do fieldwork alongside non-human others, rather than about them.",
+      publication: "",
+      excerpts: [],
+      images: [],
     },
     zh: {
-      quote:
-        "山不向只会观望的人敞开，它只为那些学会用双手倾听的人而打开。",
-      quoteSource: "田野笔记，高黎贡山，2025年10月",
+      quote: "",
+      quoteSource: "",
       abstract:
-        "这是一项正在进行中的多物种民族志研究，田野地点位于云南省高黎贡山高海拔森林地带。本研究将蕨类植物视为具有感知能力和关系性的存在，而非被动的植物标本——追踪植物生命、水分、海拔与穿行于此地的身体之间的缠绕关系。研究以感官民族志方法与超人类中心主义理论为框架，追问「与」非人类他者一同田野，而非「关于」它们进行研究，意味着什么。",
-      publication: "进行中的毕业课题 — 加州大学圣地亚哥分校人类学系，2025–2026",
-      excerpts: [
-        {
-          label: "田野片段 一",
-          body: "【田野日记摘录——构思中。此处将收录一段田野笔记：一次相遇的瞬间、一个感官细节，或一个锚定整体论述的场景。约200至300字。】",
-        },
-      ],
-      images: [
-        { src: "", caption: "【田野照片 — 高黎贡山，2025年】" },
-        { src: "", caption: "【田野照片 — 标本细节】" },
-      ],
+        "这是一项正在进行中的多物种民族志研究，田野地点位于云南省高黎贡山高海拔森林地带。本研究将蕨类植物视为积极参与世界的主体，而非被动的植物标本——追踪植物生命、水分、海拔与穿行于此地的人群之间的缠绕关系。研究以感官民族志方法与超人类中心主义理论为框架，「与」非人类他者一同田野，而非进行「关于」它们的研究。",
+      publication: "",
+      excerpts: [],
+      images: [],
     },
   },
   {
@@ -113,33 +95,21 @@ export const researchDetails: ResearchDetail[] = [
   {
     id: "waiting-for-a-diagnosis",
     en: {
-      quote:
-        "The checklist asks: do you lose things? I lose track of time, of rooms, of myself. But there is no box for that.",
-      quoteSource: "Research memo, 2024",
+      quote: "Calladita te ves más bonita.",
+      quoteSource: "Quiet girls are prettier.",
       abstract:
-        "This policy-oriented research investigates the systemic underdiagnosis of ADHD among adult women in clinical and educational settings. Drawing on interviews, diagnostic literature, and feminist disability studies, the project maps how assessment tools calibrated to hyperactive male presentation consistently fail to capture the internalized, affect-laden presentations more common among women — including inattentiveness, rejection sensitivity, and time-blindness.",
-      publication: "Policy research memo, 2024",
-      excerpts: [
-        {
-          label: "Research Note",
-          body: "[Research excerpt — in progress. This block will hold a passage from the research memo: a case pattern or a close analysis of a diagnostic framework and its gendered assumptions. Approximately 200–300 words.]",
-        },
-      ],
+        "Why are women with ADHD so consistently missed?\n\nThis collaborative research project examines the systemic underdiagnosis of ADHD in women and girls — a problem rooted not in biology, but in how the disorder was first defined. Foundational diagnostic criteria were built from study samples that were 81% male, leaving women's inattentive, internalized symptoms outside the clinical frame. The result: boys are referred for evaluation up to sixteen times more often than girls, and adult women frequently spend years accumulating misdiagnoses — anxiety, depression, \"just being overwhelmed\" — before actually diagnosed.\n\nDrawing on epidemiological data, feminist disability studies, and public health literature, the project maps three intersecting failures: the gender bias embedded in diagnostic criteria, the masking labor that makes women's ADHD legible as competence rather than struggle, and the near-total absence of research on how hormonal transitions shape the disorder across a woman's life.\n\nThe quieter the symptom, the longer the wait.",
+      publication: "Keywords: Gender · ADHD · Disability Studies · Public Health · Feminist Theory",
+      excerpts: [],
       images: [],
     },
     zh: {
-      quote:
-        "量表问道：你会丢失物品吗？而我丢失的，是时间，是房间，是自己。这些，量表没有勾选框。",
-      quoteSource: "研究备忘录，2024年",
+      quote: "Calladita te ves más bonita.",
+      quoteSource: "安静的女孩更好看。",
       abstract:
-        "本研究聚焦成年女性ADHD在临床与教育情境中被系统性漏诊的问题。研究以访谈资料、诊断文献与女性主义残障研究为基础，梳理了那些以多动男性表现为校准基准的评估工具，如何持续忽视女性群体中更为普遍的内化性、情动性表现——包括注意力涣散、拒绝敏感性与时间感知障碍。",
-      publication: "政策研究备忘录，2024年",
-      excerpts: [
-        {
-          label: "研究笔记",
-          body: "【研究摘录——构思中。此处将收录研究备忘录中的一段内容：某种案例规律，或对诊断框架及其性别预设的细致分析。约200至300字。】",
-        },
-      ],
+        "为什么患有ADHD的女性如此频繁地被漏诊？\n\n这个合作研究项目聚焦于女性和女孩ADHD系统性漏诊的现象——这个问题的根源不在于生理差异，而在于这一障碍最初是如何被定义的。奠基性的诊断标准建立在81%为男性的研究样本之上，将女性更内化、更不注意型的症状排除在临床视野之外。结果是：男孩被转介评估的概率是女孩的最多十六倍，而成年女性往往在焦虑、抑郁、「只是太累了」等诊断之间辗转多年，才被真正诊断。\n\n研究综合流行病学数据、女性主义残障研究与公共卫生文献，梳理出三重交织的失败：诊断标准中内嵌的性别偏见、让女性的ADHD看起来像「能力」而非挣扎的伪装劳动（masking），以及荷尔蒙变化如何影响女性一生中ADHD表现这一几乎空白的研究领域。\n\n症状越安静，等待就越漫长。",
+      publication: "关键词：性别 · ADHD · 残障研究 · 公共卫生 · 女性主义理论",
+      excerpts: [],
       images: [],
     },
   },
