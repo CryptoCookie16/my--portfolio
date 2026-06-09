@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { Navigation } from "@/components/navigation"
 import { useLang } from "@/lib/lang-context"
 import { getResearchDetail } from "@/lib/research-data"
 
@@ -27,6 +28,7 @@ export default function ResearchDetailPage({
 
   return (
     <main className="pt-24 pb-40 px-6">
+      <Navigation />
       <div className="max-w-2xl mx-auto">
 
         {/* Back navigation */}

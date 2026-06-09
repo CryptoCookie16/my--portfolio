@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { Navigation } from "@/components/navigation"
 import { useLang } from "@/lib/lang-context"
 import { getWorkDetail } from "@/lib/work-data"
 
@@ -31,6 +32,7 @@ export default function WorkDetailPage({
     const essayContent = lang === "zh" ? essay.zh : essay.en
     return (
       <main style={{ background: essay.bgColor, minHeight: "100vh" }} className="pb-40">
+        <Navigation />
         {/* Back navigation */}
         <div className="px-6 pt-10 pb-6" style={{ maxWidth: "58%", margin: "0 auto" }}>
           <Link
@@ -122,6 +124,7 @@ export default function WorkDetailPage({
 
   return (
     <main className="pb-40">
+      <Navigation />
 
       {/* ── Hero ─────────────────────────────────────────────── */}
       <div className="relative h-[70vh] w-full overflow-hidden">
