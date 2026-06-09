@@ -84,8 +84,8 @@ export default function WorkDetailPage({
               </figure>
             ))}
           </div>
-          {/* Right column: odd-indexed images, offset downward */}
-          <div className="flex flex-col gap-6 sm:mt-16">
+          {/* Right column: odd-indexed images */}
+          <div className="flex flex-col gap-6">
             {content.images.filter((_, i) => i % 2 === 1).map((img, i) => (
               <figure key={i}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}

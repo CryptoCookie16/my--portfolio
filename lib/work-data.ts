@@ -23,6 +23,7 @@ export const workDetails: WorkDetail[] = [
       images: [
         { src: "/images/creative/film/Capture One Catalog0009.jpg" },
         { src: "/images/creative/film/Capture One Catalog0013.jpg" },
+        { src: "/images/creative/film/Capture One Catalog0100.jpeg" },
         { src: "/images/creative/film/Capture One Catalog0016.jpg" },
         { src: "/images/creative/film/Capture One Catalog0029.jpeg" },
         { src: "/images/creative/film/Capture One Catalog0033.jpg" },
@@ -31,7 +32,6 @@ export const workDetails: WorkDetail[] = [
         { src: "/images/creative/film/Capture One Catalog0051.jpeg" },
         { src: "/images/creative/film/Capture One Catalog0071 2.JPG" },
         { src: "/images/creative/film/Capture One Catalog0080.jpg" },
-        { src: "/images/creative/film/Capture One Catalog0100.jpeg" },
       ],
     },
     zh: {
@@ -40,6 +40,7 @@ export const workDetails: WorkDetail[] = [
       images: [
         { src: "/images/creative/film/Capture One Catalog0009.jpg" },
         { src: "/images/creative/film/Capture One Catalog0013.jpg" },
+        { src: "/images/creative/film/Capture One Catalog0100.jpeg" },
         { src: "/images/creative/film/Capture One Catalog0016.jpg" },
         { src: "/images/creative/film/Capture One Catalog0029.jpeg" },
         { src: "/images/creative/film/Capture One Catalog0033.jpg" },
@@ -48,7 +49,6 @@ export const workDetails: WorkDetail[] = [
         { src: "/images/creative/film/Capture One Catalog0051.jpeg" },
         { src: "/images/creative/film/Capture One Catalog0071 2.JPG" },
         { src: "/images/creative/film/Capture One Catalog0080.jpg" },
-        { src: "/images/creative/film/Capture One Catalog0100.jpeg" },
       ],
     },
   },
