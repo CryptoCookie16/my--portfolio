@@ -89,7 +89,7 @@ export const dict = {
           subtitle:
             "Fieldwork interviews at Duke Farm and NC Chinese-operated farms, exploring fermentation, memory, and minority food culture.",
           filmType: "Zine",
-          previewImage: "",
+          previewImage: "/images/creative/Zine/zine1.png",
         },
         {
           id: "eulogy-for-breathing",
@@ -194,7 +194,7 @@ export const dict = {
           subtitle:
             "在杜克农场及北卡罗来纳州华裔农场进行的田野访谈，探索发酵、记忆与少数族裔饮食文化。",
           filmType: "独立刊物",
-          previewImage: "",
+          previewImage: "/images/creative/Zine/zine1.png",
         },
         {
           id: "eulogy-for-breathing",

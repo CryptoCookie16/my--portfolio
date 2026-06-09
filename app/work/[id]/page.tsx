@@ -89,8 +89,6 @@ export default function WorkDetailPage({
                     zIndex: pos.zIndex,
                     border: "1px solid #ccc",
                     boxShadow: "2px 4px 12px rgba(0,0,0,0.12)",
-                    background: "#fff",
-                    padding: "6px",
                   }}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -161,7 +159,7 @@ export default function WorkDetailPage({
       {/* ── Embed ────────────────────────────────────────────── */}
       {detail.embedCode && (
         <div
-          className="max-w-4xl mx-auto px-6 mt-16"
+          className="max-w-4xl mx-auto px-6 mt-32"
           dangerouslySetInnerHTML={{ __html: detail.embedCode }}
         />
       )}
