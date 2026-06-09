@@ -66,54 +66,105 @@ export default function WorkDetailPage({
         </div>
       </div>
 
-      {/* ── Gallery ──────────────────────────────────────────── */}
-      <div className="max-w-4xl mx-auto px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-start">
-          {/* Left column: even-indexed images */}
-          <div className="flex flex-col gap-6">
-            {content.images.filter((_, i) => i % 2 === 0).map((img, i) => (
-              <figure key={i}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={img.src}
-                  alt={img.caption ?? `${content.title} ${i * 2 + 1}`}
-                  className="w-full object-cover"
-                  loading="lazy"
-                />
-                {img.caption && (
-                  <figcaption className="mt-2 font-mono text-[9px] tracking-[0.15em] uppercase text-muted-foreground">
-                    {img.caption}
-                  </figcaption>
-                )}
-              </figure>
-            ))}
-          </div>
-          {/* Right column: odd-indexed images */}
-          <div className="flex flex-col gap-6">
-            {content.images.filter((_, i) => i % 2 === 1).map((img, i) => (
-              <figure key={i}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={img.src}
-                  alt={img.caption ?? `${content.title} ${i * 2 + 2}`}
-                  className="w-full object-cover"
-                  loading="lazy"
-                />
-                {img.caption && (
-                  <figcaption className="mt-2 font-mono text-[9px] tracking-[0.15em] uppercase text-muted-foreground">
-                    {img.caption}
-                  </figcaption>
-                )}
-              </figure>
-            ))}
+      {/* ── Collage ──────────────────────────────────────────── */}
+      {detail.collageImages && detail.collageImages.length > 0 && (
+        <div className="max-w-3xl mx-auto px-6 mb-20">
+          <div className="relative flex items-start justify-center" style={{ minHeight: "420px" }}>
+            {detail.collageImages.map((img, i) => {
+              const offsets = [
+                { left: "0%",   top: "0px",  zIndex: 2 },
+                { left: "28%",  top: "40px", zIndex: 3 },
+                { left: "54%",  top: "10px", zIndex: 1 },
+              ]
+              const pos = offsets[i] ?? offsets[0]
+              return (
+                <div
+                  key={i}
+                  style={{
+                    position: "absolute",
+                    left: pos.left,
+                    top: pos.top,
+                    width: "46%",
+                    transform: `rotate(${img.rotate}deg)`,
+                    zIndex: pos.zIndex,
+                    border: "1px solid #ccc",
+                    boxShadow: "2px 4px 12px rgba(0,0,0,0.12)",
+                    background: "#fff",
+                    padding: "6px",
+                  }}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={img.src}
+                    alt={`${content.title} ${i + 1}`}
+                    style={{ width: "100%", display: "block" }}
+                    loading="lazy"
+                  />
+                </div>
+              )
+            })}
           </div>
         </div>
+      )}
 
-        {/* partial note */}
-        <p className="mt-16 text-center font-mono text-[9px] tracking-[0.25em] uppercase text-muted-foreground/50">
-          — A selection of works —
-        </p>
-      </div>
+      {/* ── Gallery ──────────────────────────────────────────── */}
+      {content.images.length > 0 && (
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-start">
+            {/* Left column: even-indexed images */}
+            <div className="flex flex-col gap-6">
+              {content.images.filter((_, i) => i % 2 === 0).map((img, i) => (
+                <figure key={i}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={img.src}
+                    alt={img.caption ?? `${content.title} ${i * 2 + 1}`}
+                    className="w-full object-cover"
+                    loading="lazy"
+                  />
+                  {img.caption && (
+                    <figcaption className="mt-2 font-mono text-[9px] tracking-[0.15em] uppercase text-muted-foreground">
+                      {img.caption}
+                    </figcaption>
+                  )}
+                </figure>
+              ))}
+            </div>
+            {/* Right column: odd-indexed images */}
+            <div className="flex flex-col gap-6">
+              {content.images.filter((_, i) => i % 2 === 1).map((img, i) => (
+                <figure key={i}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={img.src}
+                    alt={img.caption ?? `${content.title} ${i * 2 + 2}`}
+                    className="w-full object-cover"
+                    loading="lazy"
+                  />
+                  {img.caption && (
+                    <figcaption className="mt-2 font-mono text-[9px] tracking-[0.15em] uppercase text-muted-foreground">
+                      {img.caption}
+                    </figcaption>
+                  )}
+                </figure>
+              ))}
+            </div>
+          </div>
+
+          {/* partial note */}
+          <p className="mt-16 text-center font-mono text-[9px] tracking-[0.25em] uppercase text-muted-foreground/50">
+            — A selection of works —
+          </p>
+        </div>
+      )}
+
+      {/* ── Embed ────────────────────────────────────────────── */}
+      {detail.embedCode && (
+        <div
+          className="max-w-4xl mx-auto px-6 mt-16"
+          dangerouslySetInnerHTML={{ __html: detail.embedCode }}
+        />
+      )}
 
     </main>
   )

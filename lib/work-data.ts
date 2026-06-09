@@ -1,6 +1,8 @@
 export type WorkDetail = {
   id: string
   heroImage: string
+  collageImages?: { src: string; rotate: number }[]
+  embedCode?: string
   en: {
     title: string
     description: string
@@ -74,6 +76,26 @@ export const workDetails: WorkDetail[] = [
         { src: "/images/creative/POEM TAROT/a91efc0fa53d10244d693ce8a9ed4d.JPG" },
         { src: "/images/creative/POEM TAROT/d35bb0529923a315e1b3537635ec58.JPG" },
       ],
+    },
+  },
+  {
+    id: "field-ferment-zine",
+    heroImage: "",
+    collageImages: [
+      { src: "/images/creative/Zine/zine1.png", rotate: -3 },
+      { src: "/images/creative/Zine/zine2.png", rotate: 2 },
+      { src: "/images/creative/Zine/zine3.png", rotate: -1.5 },
+    ],
+    embedCode: `<div style="position:relative;padding-top:max(60%,324px);width:100%;height:0;"><iframe style="position:absolute;border:none;width:100%;height:100%;left:0;top:0;" src="https://online.fliphtml5.com/JMMZine/yyqt/" title="January, March, March; A Farm Working Zine_compressed" seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" ></iframe></div>`,
+    en: {
+      title: "Field & Ferment Zine: January, March, March",
+      description: "A zine about cultivation, people, and plants—documenting fieldwork at Duke Campus Farm and Chinese-operated farms across North Carolina. Through interviews and sensory observation, it explores how minority communities preserve memory, kinship, and food culture through the labor of the land. Duke University, Spring 2026.",
+      images: [],
+    },
+    zh: {
+      title: "Field & Ferment Zine: January, March, March",
+      description: "一本关于种植、人与植物的zine，记录在杜克校园农场及北卡罗来纳州华裔农场的田野工作。通过访谈与感官观察，讨论少数族裔社群如何在劳动中，留存记忆、亲缘与饮食文化。杜克大学，2026年春。",
+      images: [],
     },
   },
 ]
