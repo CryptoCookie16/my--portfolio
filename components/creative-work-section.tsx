@@ -36,14 +36,14 @@ export function CreativeWorkSection() {
                   <figure>
                     <div className="film-frame">
                       <div
-                        className={`${layout.aspectRatio} bg-foreground/10 relative overflow-hidden transition-all duration-500 group-hover:bg-foreground/15`}
+                        className={`${project.previewFull ? "" : layout.aspectRatio} bg-foreground/10 relative overflow-hidden transition-all duration-500 group-hover:bg-foreground/15`}
                       >
                         {project.previewImage ? (
                           // eslint-disable-next-line @next/next/no-img-element
                           <img
                             src={project.previewImage}
                             alt={project.title}
-                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            className={`${project.previewFull ? "w-full h-auto block" : "absolute inset-0 w-full h-full object-cover"} transition-transform duration-500 group-hover:scale-105`}
                           />
                         ) : (
                           <div className="absolute inset-0 flex items-center justify-center">

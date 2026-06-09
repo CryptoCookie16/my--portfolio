@@ -85,11 +85,12 @@ export const dict = {
         },
         {
           id: "field-ferment-zine",
-          title: "Field & Ferment Zine",
+          title: "Field & Ferment Zine: January, March, March",
           subtitle:
             "Fieldwork interviews at Duke Farm and NC Chinese-operated farms, exploring fermentation, memory, and minority food culture.",
           filmType: "Zine",
           previewImage: "/images/creative/Zine/zine1.png",
+          previewFull: true,
         },
         {
           id: "eulogy-for-breathing",
@@ -190,11 +191,12 @@ export const dict = {
         },
         {
           id: "field-ferment-zine",
-          title: "田野与发酵",
+          title: "田野与发酵：一月，三月，三月",
           subtitle:
             "在杜克农场及北卡罗来纳州华裔农场进行的田野访谈，探索发酵、记忆与少数族裔饮食文化。",
           filmType: "独立刊物",
           previewImage: "/images/creative/Zine/zine1.png",
+          previewFull: true,
         },
         {
           id: "eulogy-for-breathing",

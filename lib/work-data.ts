@@ -93,7 +93,7 @@ export const workDetails: WorkDetail[] = [
       images: [],
     },
     zh: {
-      title: "Field & Ferment Zine: January, March, March",
+      title: "田野与发酵：一月，三月，三月",
       description: "一本关于种植、人与植物的zine，记录在杜克校园农场及北卡罗来纳州华裔农场的田野工作。通过访谈与感官观察，讨论少数族裔社群如何在劳动中，留存记忆、亲缘与饮食文化。杜克大学，2026年春。",
       images: [],
     },
