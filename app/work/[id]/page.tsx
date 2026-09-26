@@ -58,45 +58,37 @@ export default function WorkDetailPage({
             {essayContent.title}
           </h1>
 
-          {/* Paragraphs with fade-out on last one */}
-          <div style={{ position: "relative" }}>
-            {essayContent.paragraphs.map((para, i) => (
-              <p
-                key={i}
-                style={{
-                  fontWeight: 300,
-                  lineHeight: 2.2,
-                  marginBottom: "2em",
-                  fontSize: "1rem",
-                  color: "rgba(30,25,20,0.85)",
-                }}
-                className={i === 0 ? "drop-cap" : ""}
-              >
-                {para}
-              </p>
-            ))}
-
-            {/* Fade-out mask over last paragraph */}
-            <div
-              style={{
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                right: 0,
-                height: "160px",
-                background: `linear-gradient(to bottom, transparent, ${essay.bgColor})`,
-                pointerEvents: "none",
-              }}
-            />
+          {/* Paragraphs */}
+          <div>
+            {essayContent.paragraphs.map((para, i) => {
+              const isList = /^嗅觉复健清单/.test(para)
+              return (
+                <p
+                  key={i}
+                  style={{
+                    fontWeight: 300,
+                    lineHeight: isList ? 2 : 2.2,
+                    marginBottom: "2em",
+                    fontSize: isList ? "0.88rem" : "1rem",
+                    color: isList ? "rgba(30,25,20,0.6)" : "rgba(30,25,20,0.85)",
+                    fontFamily: isList ? "monospace" : "inherit",
+                    whiteSpace: "pre-line",
+                  }}
+                  className={i === 0 ? "drop-cap" : ""}
+                >
+                  {para}
+                </p>
+              )
+            })}
           </div>
 
-          {/* Fade note */}
+          {/* Copyright */}
           <p
             style={{
               fontStyle: "italic",
               fontSize: "0.75rem",
-              color: "rgba(30,25,20,0.45)",
-              marginTop: "1.5rem",
+              color: "rgba(30,25,20,0.35)",
+              marginTop: "3rem",
               letterSpacing: "0.03em",
             }}
           >
