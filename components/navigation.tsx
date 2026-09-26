@@ -40,6 +40,10 @@ export function Navigation() {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault()
     setIsMenuOpen(false)
+    if (window.location.pathname !== "/") {
+      window.location.href = "/" + href
+      return
+    }
     const element = document.querySelector(href)
     if (element) {
       element.scrollIntoView({ behavior: "smooth" })
