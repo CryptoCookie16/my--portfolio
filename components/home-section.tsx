@@ -7,6 +7,7 @@ export function HomeSection() {
   const { t } = useLang()
   const [showIntro, setShowIntro] = useState(false)
   const [fading, setFading] = useState(false)
+  const [cableProgress, setCableProgress] = useState(0)
   const iframeRef = useRef<HTMLIFrameElement>(null)
 
   useEffect(() => {
@@ -20,7 +21,10 @@ export function HomeSection() {
   useEffect(() => {
     if (!showIntro) return
     const handler = (e: MessageEvent) => {
-      if (e.data === "cableway:done") {
+      if (!e.data || typeof e.data !== "object") return
+      if (e.data.type === "cableway:progress") {
+        setCableProgress(e.data.progress as number)
+      } else if (e.data.type === "cableway:done") {
         setFading(true)
         setTimeout(() => {
           setShowIntro(false)
@@ -41,15 +45,26 @@ export function HomeSection() {
             inset: 0,
             zIndex: 9999,
             background: "#f7f3ea",
+            clipPath: (() => {
+              const start = 0.07, end = 0.89
+              const pct = Math.round(Math.max(0, Math.min(1, (cableProgress - start) / (end - start))) * 100)
+              return pct > 2 ? `inset(0 0 0 ${pct}%)` : undefined
+            })(),
+            transition: fading ? "opacity 1.1s ease" : "clip-path 0.12s linear",
             opacity: fading ? 0 : 1,
-            transition: "opacity 1.1s ease",
             pointerEvents: fading ? "none" : "auto",
           }}
         >
           <iframe
             ref={iframeRef}
             src="/cableway/index.html?style=marker&embedded=1"
-            style={{ width: "100%", height: "100%", border: "none" }}
+            style={{
+              width: "100%",
+              height: "100%",
+              border: "none",
+              transform: "scale(0.55)",
+              transformOrigin: "center center",
+            }}
             title="滑索"
           />
         </div>

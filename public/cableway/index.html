@@ -816,9 +816,16 @@
           || state.phase === "settling"
           || (state.phase === "impact" && state.impactAge > .18);
         prototype.classList.toggle("is-replayable", replayReady);
-        if (state.phase === "settled" && !state._notified) {
-          state._notified = true;
-          if (window.parent !== window) window.parent.postMessage("cableway:done", "*");
+        if (window.parent !== window) {
+          const now = performance.now();
+          if (!state._lastMsg || now - state._lastMsg > 40) {
+            state._lastMsg = now;
+            window.parent.postMessage({ type: "cableway:progress", progress: state.progress }, "*");
+          }
+          if (state.phase === "settled" && !state._notified) {
+            state._notified = true;
+            window.parent.postMessage({ type: "cableway:done" }, "*");
+          }
         }
       }
 
