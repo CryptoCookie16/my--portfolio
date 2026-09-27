@@ -25,7 +25,7 @@ export function HomeSection() {
     const lerp = lerpRef.current
 
     function animate() {
-      lerp.current += (lerp.target - lerp.current) * 0.025 // slow lag
+      lerp.current += (lerp.target - lerp.current) * 0.014 // slow lag
       const pct = lerp.current * 100
       const softEdge = 28 // width of the gradient soft zone (%)
       const edgeLeft = Math.max(0, pct - softEdge)
