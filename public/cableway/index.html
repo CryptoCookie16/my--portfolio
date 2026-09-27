@@ -1,0 +1,1040 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#c9e6ee">
+  <meta name="description" content="一个可以拖高、松手、滑过页面的童年 Cableway 互动原型。">
+  <title>童年滑索 · 互动原型</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M7 18Q32 25 57 18' fill='none' stroke='%23273537' stroke-width='4' stroke-linecap='round'/%3E%3Ccircle cx='31' cy='23' r='5' fill='%23d8583f'/%3E%3Cpath d='M31 27v23' stroke='%23273537' stroke-width='4'/%3E%3Cellipse cx='31' cy='52' rx='10' ry='4' fill='%23273537'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #273537;
+      --muted: #5d706f;
+      --sky-top: #bddfe8;
+      --sky-bottom: #eaf1df;
+      --grass: #8da45b;
+      --grass-dark: #667942;
+      --accent: #d8583f;
+      --paper: rgba(255, 253, 242, .76);
+      font-family: "Avenir Next", Avenir, "Helvetica Neue", "PingFang SC", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { margin: 0; min-height: 100%; }
+
+    body {
+      min-height: 100svh;
+      overflow: hidden;
+      color: var(--ink);
+      background: var(--sky-bottom);
+    }
+
+    button { font: inherit; }
+
+    .prototype {
+      position: relative;
+      min-height: 100svh;
+      overflow: hidden;
+      isolation: isolate;
+      background:
+        radial-gradient(circle at 78% 16%, rgba(255,255,239,.78) 0 6%, transparent 20%),
+        linear-gradient(180deg, var(--sky-top) 0 61%, var(--sky-bottom) 76% 100%);
+    }
+
+    .prototype::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 20;
+      pointer-events: none;
+      opacity: .11;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='110' height='110' viewBox='0 0 110 110'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.36'/%3E%3C/svg%3E");
+      mix-blend-mode: multiply;
+    }
+
+    .masthead {
+      position: relative;
+      z-index: 12;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: clamp(1.1rem, 3vw, 2.25rem) clamp(1.15rem, 4vw, 3.5rem);
+      pointer-events: none;
+    }
+
+    .title {
+      margin: 0;
+      max-width: 11ch;
+      font-family: Georgia, "Songti SC", serif;
+      font-size: clamp(1.8rem, 4vw, 3.9rem);
+      font-weight: 400;
+      line-height: .98;
+      letter-spacing: -.035em;
+    }
+
+    .instruction {
+      margin: .25rem 0 0;
+      max-width: 15rem;
+      color: var(--muted);
+      font-size: clamp(.85rem, 1.3vw, 1rem);
+      line-height: 1.5;
+      text-align: right;
+    }
+
+    .instruction strong {
+      display: block;
+      color: var(--ink);
+      font-weight: 650;
+    }
+
+    .scene {
+      position: absolute;
+      inset: clamp(.65rem, 2.2vh, 1.25rem) clamp(.45rem, 2.4vw, 2rem) clamp(2.8rem, 7vh, 5rem);
+      overflow: hidden;
+      border-radius: 2rem;
+      outline: none;
+    }
+
+    .haze {
+      position: absolute;
+      inset: 35% -10% -10%;
+      background:
+        radial-gradient(ellipse at 20% 80%, rgba(89,115,64,.18), transparent 48%),
+        radial-gradient(ellipse at 76% 66%, rgba(89,115,64,.15), transparent 46%);
+      filter: blur(18px);
+    }
+
+    .ground {
+      position: absolute;
+      left: -4%;
+      right: -4%;
+      bottom: -9%;
+      height: 60%;
+      z-index: 1;
+      border-radius: 50% 50% 0 0 / 12% 12% 0 0;
+      background:
+        linear-gradient(90deg, transparent 0 8%, rgba(255,250,224,.16) 12% 16%, transparent 22% 100%),
+        linear-gradient(180deg, #9bae6a, var(--grass));
+      box-shadow: inset 0 18px 30px rgba(255,255,220,.15);
+    }
+
+    .ground::before {
+      content: "";
+      position: absolute;
+      inset: 3% 0 auto;
+      height: 10px;
+      opacity: .28;
+      background: repeating-linear-gradient(95deg, transparent 0 13px, var(--grass-dark) 14px 16px, transparent 17px 25px);
+    }
+
+    .contact-shadow {
+      position: absolute;
+      z-index: 2;
+      top: 48.7%;
+      width: clamp(130px, 17vw, 220px);
+      height: clamp(12px, 1.6vw, 21px);
+      border-radius: 50%;
+      background: rgba(52, 67, 39, .22);
+      filter: blur(7px);
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .contact-shadow-left { left: 9.7%; }
+    .contact-shadow-right { left: 92.8%; }
+
+    .cable-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      pointer-events: none;
+    }
+
+    .cable-shadow { stroke: rgba(255,255,255,.72); stroke-width: 4; fill: none; }
+    .cable-main { stroke: #536062; stroke-width: 2.2; fill: none; }
+
+    .support-image {
+      position: absolute;
+      top: 13.2%;
+      width: clamp(225px, 31vw, 390px);
+      height: auto;
+      z-index: 3;
+      pointer-events: none;
+      filter: saturate(.82) contrast(.96) drop-shadow(0 13px 7px rgba(62,74,54,.16));
+    }
+
+    .support-left { left: clamp(-110px, -8.2vw, -52px); }
+    .support-right { right: clamp(-142px, -10.7vw, -76px); transform: scaleX(-1); }
+
+    .traveller {
+      position: absolute;
+      z-index: 7;
+      width: 1px;
+      height: 1px;
+      transform-origin: 0 0;
+      will-change: transform;
+      pointer-events: none;
+    }
+
+    .trolley-crop,
+    .pendulum {
+      --assembly-w: clamp(72px, 7.7vw, 116px);
+      position: absolute;
+      left: 0;
+      top: calc(var(--assembly-w) * -.07);
+      width: var(--assembly-w);
+      height: calc(var(--assembly-w) * 1.5);
+      transform: translateX(-50%);
+    }
+
+    .trolley-crop {
+      z-index: 4;
+      overflow: hidden;
+      height: calc(var(--assembly-w) * .34);
+    }
+
+    .trolley-crop img,
+    .pendulum > .assembly {
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 5px 4px rgba(40,50,45,.19));
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .pendulum {
+      z-index: 3;
+      transform-origin: 50% calc(var(--assembly-w) * .17);
+      will-change: transform;
+    }
+
+    .pendulum > .assembly {
+      z-index: 3;
+      clip-path: inset(11% 0 0 0);
+    }
+
+    .pendulum > .assembly-front {
+      z-index: 7;
+      clip-path: polygon(48.3% 11%, 51.7% 11%, 51.7% 90%, 48.3% 90%);
+    }
+
+    .rider {
+      position: absolute;
+      z-index: 6;
+      width: calc(var(--assembly-w) * 1.18);
+      height: auto;
+      left: calc(var(--assembly-w) * -.11);
+      top: calc(var(--assembly-w) * .56);
+      transform: rotate(-3deg);
+      transform-origin: 68% 78%;
+      filter: drop-shadow(0 8px 5px rgba(43,57,48,.17));
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .rider-hand-front {
+      z-index: 8;
+      clip-path: polygon(47% 24%, 61% 24%, 61% 39%, 47% 39%);
+      filter: none;
+      pointer-events: none;
+    }
+
+    .grab-target {
+      position: absolute;
+      z-index: 10;
+      width: clamp(86px, 10vw, 128px);
+      height: clamp(94px, 13vw, 150px);
+      left: 50%;
+      top: 78%;
+      transform: translate(-50%, -50%);
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      cursor: grab;
+      pointer-events: auto;
+      touch-action: none;
+    }
+
+    .grab-target:active { cursor: grabbing; }
+
+    .grab-target:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 4px;
+      background: rgba(255,255,255,.12);
+    }
+
+    .is-active .grab-target:focus-visible,
+    .is-settled .grab-target:focus-visible {
+      outline: 0;
+      background: transparent;
+    }
+
+    .grab-ring {
+      position: absolute;
+      left: 50%;
+      top: 78%;
+      z-index: 9;
+      width: clamp(56px, 6vw, 84px);
+      aspect-ratio: 1;
+      transform: translate(-50%, -50%);
+      border: 1.5px dashed rgba(39,53,55,.55);
+      border-radius: 50%;
+      opacity: .8;
+      animation: breathe 2.2s ease-in-out infinite;
+      transition: opacity .2s ease;
+    }
+
+    .is-active .grab-ring,
+    .has-ridden .grab-ring { opacity: 0; animation: none; }
+
+    .energy {
+      position: absolute;
+      z-index: 11;
+      left: 50%;
+      top: calc(78% + clamp(58px, 8vw, 90px));
+      width: min(150px, 32vw);
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity .2s ease;
+      pointer-events: none;
+    }
+
+    .is-dragging .energy { opacity: 1; }
+
+    .energy-track {
+      height: 4px;
+      overflow: hidden;
+      border-radius: 10px;
+      background: rgba(39,53,55,.18);
+    }
+
+    .energy-fill {
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #6b8b68, #d9a042 55%, var(--accent));
+    }
+
+    .energy-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: .35rem;
+      color: var(--muted);
+      font-size: .7rem;
+      letter-spacing: .08em;
+    }
+
+    .reset {
+      position: absolute;
+      right: clamp(1rem, 3vw, 2rem);
+      bottom: clamp(.7rem, 2.4vw, 1.6rem);
+      z-index: 14;
+      min-height: 44px;
+      padding: .65rem .95rem;
+      border: 1px solid rgba(39,53,55,.25);
+      border-radius: 999px;
+      color: var(--ink);
+      background: var(--paper);
+      box-shadow: 0 5px 20px rgba(47,60,52,.08);
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(8px);
+      pointer-events: none;
+      transition: opacity .3s ease, transform .3s ease, background .2s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .is-replayable .reset,
+    .is-settled .reset { opacity: 1; transform: none; pointer-events: auto; }
+    .reset:hover { background: rgba(255,253,242,.95); }
+
+    .credit {
+      position: absolute;
+      left: clamp(1rem, 3vw, 2rem);
+      bottom: clamp(.9rem, 2.8vw, 1.75rem);
+      z-index: 12;
+      color: rgba(39,53,55,.62);
+      font-size: .72rem;
+    }
+
+    .credit a { color: inherit; text-underline-offset: 2px; }
+
+    /* Alternate visual skins keep the same DOM, geometry and physics. */
+    html[data-style="marker"] {
+      --ink: #315ca8;
+      --muted: #63769c;
+      --paper: rgba(255, 252, 235, .9);
+      --accent: #ef6473;
+    }
+
+    html[data-style="marker"] body,
+    html[data-style="marker"] .prototype {
+      background: #f7f3ea;
+    }
+
+    html[data-style="marker"] .prototype::after { opacity: .075; }
+    html[data-style="marker"] .haze,
+    html[data-style="marker"] .contact-shadow { display: none; }
+
+    html[data-style="marker"] .ground {
+      bottom: -12%;
+      height: 47%;
+      background: #f7f3ea;
+      box-shadow: none;
+    }
+
+    html[data-style="marker"] .ground::before {
+      top: 1%;
+      height: 15px;
+      opacity: .5;
+      background: repeating-linear-gradient(100deg, transparent 0 17px, #62aa77 18px 21px, transparent 22px 31px);
+    }
+
+    html[data-style="marker"] .cable-shadow { display: none; }
+    html[data-style="marker"] .cable-main {
+      stroke: #6487cf;
+      stroke-width: 3.35;
+      stroke-linecap: round;
+    }
+
+    html[data-style="marker"] .support-image {
+      top: 14.4%;
+      width: clamp(188px, 23vw, 306px);
+      filter: drop-shadow(0 5px 0 rgba(54, 90, 156, .06));
+    }
+
+    html[data-style="marker"] .support-left { left: clamp(-78px, -5.8vw, -38px); }
+    html[data-style="marker"] .support-right {
+      top: 18.7%;
+      right: clamp(-92px, -6.7vw, -48px);
+      width: clamp(174px, 21.5vw, 284px);
+    }
+
+    html[data-style="marker"] .trolley-crop,
+    html[data-style="marker"] .pendulum { --assembly-w: clamp(76px, 7.35vw, 110px); }
+
+    html[data-style="marker"] .pendulum > .assembly {
+      transform: scaleY(1.18);
+      transform-origin: 50% 11%;
+    }
+
+    html[data-style="marker"] .rider {
+      width: calc(var(--assembly-w) * 1.58);
+      left: calc(var(--assembly-w) * -.38);
+      top: calc(var(--assembly-w) * .39);
+      transform: rotate(-4deg);
+      filter: drop-shadow(0 4px 0 rgba(49, 92, 168, .06));
+    }
+
+    html[data-style="marker"] .assembly-front,
+    html[data-style="marker"] .rider-hand-front { display: none; }
+
+    html[data-style="marker"] .grab-ring {
+      border-width: 2px;
+      border-color: rgba(49, 92, 168, .55);
+    }
+
+    html[data-style="ink"] {
+      --ink: #202020;
+      --muted: #5f5f5f;
+      --paper: rgba(255, 255, 253, .94);
+      --accent: #202020;
+    }
+
+    html[data-style="ink"] body,
+    html[data-style="ink"] .prototype { background: #fff; }
+    html[data-style="ink"] .prototype::after { opacity: .035; }
+    html[data-style="ink"] .haze,
+    html[data-style="ink"] .contact-shadow { display: none; }
+
+    html[data-style="ink"] .ground {
+      bottom: -12%;
+      height: 48%;
+      background: #fff;
+      box-shadow: none;
+    }
+
+    html[data-style="ink"] .ground::before {
+      top: 1%;
+      height: 1.4px;
+      opacity: .72;
+      background: #222;
+    }
+
+    html[data-style="ink"] .cable-shadow { display: none; }
+    html[data-style="ink"] .cable-main {
+      stroke: #202020;
+      stroke-width: 1.55;
+      stroke-linecap: round;
+    }
+
+    html[data-style="ink"] .support-image {
+      top: 14.2%;
+      width: clamp(190px, 23vw, 310px);
+      filter: none;
+      opacity: 0;
+    }
+
+    html[data-style="ink"].ink-assets-ready .support-image { opacity: 1; }
+    html[data-style="ink"] .support-left { left: clamp(-52px, -3.4vw, -22px); }
+    html[data-style="ink"] .support-right {
+      top: 18.2%;
+      right: clamp(-50px, -3.2vw, -22px);
+      width: clamp(176px, 21.4vw, 288px);
+      transform: none;
+    }
+
+    html[data-style="ink"] .trolley-crop,
+    html[data-style="ink"] .pendulum { --assembly-w: clamp(82px, 7.45vw, 112px); }
+
+    html[data-style="ink"] .trolley-crop {
+      top: calc(var(--assembly-w) * .02);
+      height: calc(var(--assembly-w) * .66);
+    }
+
+    html[data-style="ink"] .trolley-crop img {
+      top: calc(var(--assembly-w) * -.22);
+      left: 22.5%;
+      width: 55%;
+    }
+
+    html[data-style="ink"] .trolley-crop img,
+    html[data-style="ink"] .pendulum > .assembly { filter: none; opacity: 0; }
+
+    html[data-style="ink"].ink-assets-ready .trolley-crop img,
+    html[data-style="ink"].ink-assets-ready .pendulum > .assembly { opacity: 1; }
+
+    html[data-style="ink"] .pendulum {
+      top: 0;
+      transform-origin: 50% 2%;
+    }
+
+    html[data-style="ink"] .pendulum > .assembly {
+      left: -22.5%;
+      width: 145%;
+      clip-path: none;
+    }
+
+    html[data-style="ink"] .rider { display: none; }
+
+    html[data-style="ink"] .assembly-front,
+    html[data-style="ink"] .rider-hand-front { display: none; }
+
+    html[data-style="ink"] .grab-ring {
+      border-width: 1.8px;
+      border-color: rgba(25,25,25,.55);
+    }
+
+    .status {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+
+    @keyframes breathe {
+      0%, 100% { transform: translate(-50%, -50%) scale(.9); opacity: .42; }
+      50% { transform: translate(-50%, -50%) scale(1.08); opacity: .8; }
+    }
+
+    @media (max-width: 650px) {
+      .scene { inset: .55rem .25rem 3.4rem; border-radius: 1.2rem; }
+      .support-image { top: 20%; width: clamp(210px, 49vw, 280px); }
+      .support-left { left: -82px; }
+      .support-right { right: -94px; }
+      .ground { height: 69%; bottom: -8%; }
+      .contact-shadow { top: 39.3%; width: 118px; height: 13px; }
+      .credit { max-width: 58vw; }
+      html[data-style="marker"] .support-image,
+      html[data-style="ink"] .support-image { width: clamp(150px, 36vw, 218px); }
+      html[data-style="marker"] .support-left { left: -46px; }
+      html[data-style="marker"] .support-right { right: -52px; }
+      html[data-style="ink"] .support-left { left: -30px; }
+      html[data-style="ink"] .support-right { right: -32px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .grab-ring { animation: none; }
+      .instruction strong { display: none; }
+    }
+
+    /* Hide UI chrome when embedded */
+    html[data-embedded] .masthead,
+    html[data-embedded] .credit { display: none; }
+  </style>
+</head>
+<body>
+  <main class="prototype" id="prototype">
+    <section class="scene" id="scene" aria-label="可拖动的游乐场滑索互动原型">
+      <div class="haze"></div>
+      <div class="ground"></div>
+      <div class="contact-shadow contact-shadow-left" aria-hidden="true"></div>
+      <div class="contact-shadow contact-shadow-right" aria-hidden="true"></div>
+
+      <svg class="cable-svg" aria-hidden="true">
+        <path class="cable-shadow" id="cableShadow"></path>
+        <path class="cable-main" id="cablePath"></path>
+      </svg>
+
+      <img class="support-image support-left" src="assets/support-frame.png" alt="" draggable="false">
+      <img class="support-image support-right" src="assets/support-frame.png" alt="" draggable="false">
+
+      <div class="traveller" id="traveller">
+        <div class="trolley-crop"><img src="assets/trolley-hanger-seat.png" alt="" draggable="false"></div>
+        <div class="pendulum" id="pendulum">
+          <img class="assembly" src="assets/trolley-hanger-seat.png" alt="" draggable="false">
+          <img class="rider" src="assets/rider-seated.png" alt="一个坐在滑索圆盘上的小人" draggable="false">
+          <img class="assembly assembly-front" src="assets/trolley-hanger-seat.png" alt="" draggable="false">
+          <img class="rider rider-hand-front" src="assets/rider-seated.png" alt="" draggable="false">
+          <span class="grab-ring" aria-hidden="true"></span>
+          <button class="grab-target" id="grabTarget" aria-label="拖动圆盘。也可以使用方向键调整高度，再按空格松手。"></button>
+          <div class="energy" aria-hidden="true">
+            <div class="energy-track"><div class="energy-fill" id="energyFill"></div></div>
+            <div class="energy-labels"><span>轻轻</span><span>很高</span></div>
+          </div>
+        </div>
+      </div>
+
+      <p class="status" id="status" aria-live="polite">滑索正在起点等待。</p>
+    </section>
+
+    <button class="reset" id="reset" type="button">再玩一次</button>
+    <p class="credit">Reference: <a href="https://www.playgrounds.co.nz/shop/product-detail/robinia-cableway-for-level-ground/" target="_blank" rel="noreferrer">KOMPAN Robinia Cableway</a></p>
+  </main>
+
+  <script>
+    (async () => {
+      "use strict";
+
+      function extractInkElement(source, crop) {
+        const canvas = document.createElement("canvas");
+        canvas.width = crop.w;
+        canvas.height = crop.h;
+        const context = canvas.getContext("2d", { willReadFrequently: true });
+        context.drawImage(source, -crop.x, -crop.y);
+        const frame = context.getImageData(0, 0, crop.w, crop.h);
+        const pixels = frame.data;
+        const visited = new Uint8Array(crop.w * crop.h);
+        const queue = new Int32Array(crop.w * crop.h);
+        let head = 0;
+        let tail = 0;
+
+        const isPaper = (index) => {
+          const offset = index * 4;
+          const r = pixels[offset];
+          const g = pixels[offset + 1];
+          const b = pixels[offset + 2];
+          return pixels[offset + 3] > 0 && r > 225 && g > 225 && b > 225 && Math.max(r, g, b) - Math.min(r, g, b) < 22;
+        };
+
+        const enqueue = (index) => {
+          if (visited[index] || !isPaper(index)) return;
+          visited[index] = 1;
+          queue[tail++] = index;
+        };
+
+        for (let x = 0; x < crop.w; x += 1) {
+          enqueue(x);
+          enqueue((crop.h - 1) * crop.w + x);
+        }
+        for (let y = 0; y < crop.h; y += 1) {
+          enqueue(y * crop.w);
+          enqueue(y * crop.w + crop.w - 1);
+        }
+
+        while (head < tail) {
+          const index = queue[head++];
+          const x = index % crop.w;
+          const y = (index / crop.w) | 0;
+          pixels[index * 4 + 3] = 0;
+          if (x > 0) enqueue(index - 1);
+          if (x + 1 < crop.w) enqueue(index + 1);
+          if (y > 0) enqueue(index - crop.w);
+          if (y + 1 < crop.h) enqueue(index + crop.w);
+        }
+
+        if (crop.clearTopPaper) {
+          for (let y = 0; y < Math.min(crop.clearTopPaper, crop.h); y += 1) {
+            for (let x = 0; x < crop.w; x += 1) {
+              const index = y * crop.w + x;
+              if (isPaper(index)) pixels[index * 4 + 3] = 0;
+            }
+          }
+        }
+
+        context.putImageData(frame, 0, 0);
+        (crop.clear || []).forEach((area) => {
+          context.clearRect(area.x, area.y, area.w, area.h);
+        });
+        return canvas.toDataURL("image/png");
+      }
+
+      async function useExactInkReference() {
+        const source = new Image();
+        source.src = "assets/ink-reference-scene.png";
+        await source.decode();
+
+        const cuts = {
+          left: { x: 45, y: 140, w: 355, h: 410, clear: [{ x: 195, y: 22, w: 160, h: 68 }] },
+          right: { x: 1700, y: 92, w: 390, h: 460, clear: [{ x: 0, y: 25, w: 165, h: 72 }] },
+          trolley: { x: 872, y: 196, w: 104, h: 88, clear: [{ x: 0, y: 0, w: 104, h: 28 }, { x: 0, y: 0, w: 25, h: 60 }, { x: 81, y: 0, w: 23, h: 60 }] },
+          pendulum: { x: 842, y: 258, w: 190, h: 270, clearTopPaper: 84 }
+        };
+
+        document.querySelector(".support-left").src = extractInkElement(source, cuts.left);
+        document.querySelector(".support-right").src = extractInkElement(source, cuts.right);
+        document.querySelector(".trolley-crop img").src = extractInkElement(source, cuts.trolley);
+        document.querySelectorAll(".pendulum > .assembly").forEach((image) => {
+          image.src = extractInkElement(source, cuts.pendulum);
+        });
+        document.documentElement.classList.add("ink-assets-ready");
+      }
+
+      const requestedStyle = new URLSearchParams(location.search).get("style");
+      const visualStyle = requestedStyle === "marker" || requestedStyle === "ink" ? requestedStyle : "default";
+      if (visualStyle !== "default") {
+        document.documentElement.dataset.style = visualStyle;
+        document.title = visualStyle === "marker"
+          ? "童年滑索 · 彩色马克笔版"
+          : "童年滑索 · 黑色线稿版";
+
+        if (visualStyle === "marker") {
+          document.querySelectorAll(".support-image").forEach((image) => { image.src = "assets/marker-support-frame.png"; });
+          document.querySelectorAll(".trolley-crop img, .pendulum > .assembly").forEach((image) => { image.src = "assets/marker-trolley-hanger-seat.png"; });
+          document.querySelectorAll(".rider").forEach((image) => { image.src = "assets/marker-rider-seated.png"; });
+        } else {
+          await useExactInkReference();
+        }
+      }
+
+      const prototype = document.querySelector("#prototype");
+      const scene = document.querySelector("#scene");
+      const traveller = document.querySelector("#traveller");
+      const pendulum = document.querySelector("#pendulum");
+      const grabTarget = document.querySelector("#grabTarget");
+      const cablePath = document.querySelector("#cablePath");
+      const cableShadow = document.querySelector("#cableShadow");
+      const energyFill = document.querySelector("#energyFill");
+      const resetButton = document.querySelector("#reset");
+      const status = document.querySelector("#status");
+      const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
+
+      const state = {
+        phase: "idle",
+        progress: .07,
+        velocity: 0,
+        angle: 0,
+        angularVelocity: 0,
+        launchEnergy: 0,
+        targetProgress: .89,
+        impactEnergy: 0,
+        impactAge: 0,
+        settleAge: 0,
+        lastVelocity: 0,
+        pointerId: null,
+        lastTime: performance.now(),
+        accumulator: 0,
+        sleeping: false
+      };
+
+      const config = {
+        start: .07,
+        softEnd: .89,
+        hardEnd: 1,
+        sag: .052,
+        gravity: 21,
+        dampingRide: 1.12,
+        dampingSettle: 1.75,
+        fixedStep: 1 / 120,
+        maxAngle: 1.13
+      };
+
+      const geometry = { width: 0, height: 0, startX: 0, endX: 0, startY: 0, endY: 0, controlY: 0, sagPx: 0 };
+
+      function measure() {
+        const rect = scene.getBoundingClientRect();
+        geometry.width = rect.width;
+        geometry.height = rect.height;
+        const alternateSkin = visualStyle === "marker" || visualStyle === "ink";
+        if (visualStyle === "ink") {
+          geometry.startX = rect.width * (innerWidth < 650 ? .09 : .095);
+          geometry.endX = rect.width * (innerWidth < 650 ? .92 : .907);
+          geometry.startY = rect.height * (innerWidth < 650 ? .265 : .208);
+          geometry.endY = rect.height * (innerWidth < 650 ? .307 : .247);
+        } else if (visualStyle === "marker") {
+          geometry.startX = rect.width * (innerWidth < 650 ? .108 : .112);
+          geometry.endX = rect.width * (innerWidth < 650 ? .925 : .92);
+          geometry.startY = rect.height * (innerWidth < 650 ? .225 : .175);
+          geometry.endY = rect.height * (innerWidth < 650 ? .265 : .22);
+        } else {
+          geometry.startX = rect.width * (innerWidth < 650 ? (alternateSkin ? .075 : .12) : (alternateSkin ? .065 : .10));
+          geometry.endX = rect.width * (innerWidth < 650 ? (alternateSkin ? .945 : .91) : (alternateSkin ? .955 : .925));
+          geometry.startY = rect.height * (innerWidth < 650 ? (alternateSkin ? .205 : .23) : .155);
+          geometry.endY = geometry.startY + (alternateSkin ? rect.height * (innerWidth < 650 ? .035 : .045) : 0);
+        }
+        geometry.sagPx = rect.height * config.sag;
+        const midX = (geometry.startX + geometry.endX) / 2;
+        geometry.controlY = (geometry.startY + geometry.endY) / 2 + geometry.sagPx * 2;
+        const path = `M ${geometry.startX} ${geometry.startY} Q ${midX} ${geometry.controlY} ${geometry.endX} ${geometry.endY}`;
+        cablePath.setAttribute("d", path);
+        cableShadow.setAttribute("d", path);
+        render();
+      }
+
+      function cablePoint(progress) {
+        const x = geometry.startX + (geometry.endX - geometry.startX) * progress;
+        const inverse = 1 - progress;
+        const y = inverse * inverse * geometry.startY
+          + 2 * inverse * progress * geometry.controlY
+          + progress * progress * geometry.endY;
+        const derivativeY = 2 * inverse * (geometry.controlY - geometry.startY)
+          + 2 * progress * (geometry.endY - geometry.controlY);
+        const slope = derivativeY / (geometry.endX - geometry.startX);
+        return { x, y, rotation: Math.atan(slope) };
+      }
+
+      function render() {
+        const point = cablePoint(state.progress);
+        traveller.style.transform = `translate3d(${point.x}px, ${point.y}px, 0) rotate(${point.rotation}rad)`;
+        pendulum.style.transform = `translateX(-50%) rotate(${-state.angle}rad)`;
+        energyFill.style.width = `${Math.round(state.launchEnergy * 100)}%`;
+        prototype.classList.toggle("is-dragging", state.phase === "dragging");
+        prototype.classList.toggle("is-active", state.phase === "riding" || state.phase === "impact" || state.phase === "settling");
+        prototype.classList.toggle("has-ridden", state.progress > config.start + .02);
+        prototype.classList.toggle("is-settled", state.phase === "settled");
+        const replayReady = state.phase === "settled"
+          || state.phase === "settling"
+          || (state.phase === "impact" && state.impactAge > .18);
+        prototype.classList.toggle("is-replayable", replayReady);
+        if (state.phase === "settled" && !state._notified) {
+          state._notified = true;
+          if (window.parent !== window) window.parent.postMessage("cableway:done", "*");
+        }
+      }
+
+      function beginDrag(event) {
+        if (state.phase !== "idle" && state.phase !== "dragging") return;
+        state.phase = "dragging";
+        state.pointerId = event.pointerId;
+        grabTarget.setPointerCapture(event.pointerId);
+        updateDrag(event);
+        status.textContent = "正在把圆盘往高处拖。";
+      }
+
+      function updateDrag(event) {
+        if (state.phase !== "dragging" || event.pointerId !== state.pointerId) return;
+        const rect = scene.getBoundingClientRect();
+        const point = cablePoint(config.start);
+        const px = event.clientX - rect.left;
+        const py = event.clientY - rect.top;
+        const dx = px - point.x;
+        const dy = Math.max(22, py - point.y);
+        const rawAngle = Math.atan2(dx, dy);
+        state.angle = Math.min(.08, Math.max(-config.maxAngle, rawAngle));
+        state.angularVelocity = 0;
+        state.launchEnergy = Math.min(1, Math.max(0, (Math.abs(state.angle) - .06) / (config.maxAngle - .06)));
+        state.progress = config.start * (1 - state.launchEnergy);
+        render();
+      }
+
+      function releaseDrag(event) {
+        if (state.phase !== "dragging") return;
+        if (event && event.pointerId !== undefined && event.pointerId !== state.pointerId) return;
+        if (state.pointerId !== null && grabTarget.hasPointerCapture(state.pointerId)) {
+          grabTarget.releasePointerCapture(state.pointerId);
+        }
+        state.pointerId = null;
+        const energy = Math.max(.055, state.launchEnergy);
+        const hardRaw = Math.min(1, Math.max(0, (energy - .48) / .52));
+        const hardFactor = hardRaw * hardRaw * (3 - 2 * hardRaw);
+        state.impactEnergy = hardFactor;
+        state.targetProgress = config.softEnd + (config.hardEnd - config.softEnd) * hardFactor;
+        state.impactAge = 0;
+        state.settleAge = 0;
+
+        if (reducedMotion.matches) {
+          state.progress = state.targetProgress;
+          state.angle = 0;
+          state.angularVelocity = 0;
+          state.velocity = 0;
+          state.phase = "settled";
+          status.textContent = "滑索已经到达另一端。";
+          render();
+          return;
+        }
+
+        state.velocity = .145 + Math.pow(energy, .7) * .25;
+        state.lastVelocity = state.velocity;
+        state.angularVelocity = 0;
+        state.phase = "riding";
+        state.sleeping = false;
+        status.textContent = energy > .67 ? "很快的一趟开始了。" : "滑索正在向另一端滑行。";
+        render();
+      }
+
+      function step(dt) {
+        if (state.phase !== "riding" && state.phase !== "impact" && state.phase !== "settling") return;
+
+        let acceleration = 0;
+
+        if (state.phase === "riding") {
+          const brakeDistance = .12 - .075 * state.impactEnergy;
+          const brakeStart = state.targetProgress - brakeDistance;
+          if (state.progress < brakeStart) {
+            acceleration = -.026 - .018 * state.launchEnergy;
+          } else {
+            const brake = Math.min(1, (state.progress - brakeStart) / brakeDistance);
+            const brakeStrength = 1.75 - 1.05 * state.impactEnergy;
+            acceleration = -(.52 + brakeStrength * brake) * state.velocity;
+          }
+
+          state.lastVelocity = state.velocity;
+          state.velocity = Math.max(.075, state.velocity + acceleration * dt);
+          state.progress += state.velocity * dt;
+
+          if (state.progress >= state.targetProgress) {
+            state.progress = state.targetProgress;
+            const impact = state.lastVelocity;
+            state.angularVelocity += Math.min(6.2, impact * (4.5 + 12 * state.impactEnergy));
+            if (state.impactEnergy > .14) {
+              state.velocity = -(.025 + .055 * state.impactEnergy);
+              state.phase = "impact";
+              state.impactAge = 0;
+              status.textContent = "撞到尽头了。圆盘猛地向前荡。";
+            } else {
+              state.velocity = 0;
+              state.phase = "settling";
+              state.settleAge = 0;
+              status.textContent = "轻轻停下了。圆盘还在晃。";
+            }
+          }
+        } else if (state.phase === "impact") {
+          state.impactAge += dt;
+          const displacement = state.progress - state.targetProgress;
+          acceleration = -42 * displacement - 9.5 * state.velocity;
+          state.velocity += acceleration * dt;
+          state.progress += state.velocity * dt;
+          if (state.impactAge > .42 && Math.abs(displacement) < .0012 && Math.abs(state.velocity) < .008) {
+            state.progress = state.targetProgress;
+            state.velocity = 0;
+            state.phase = "settling";
+            state.settleAge = 0;
+          }
+        }
+
+        if (state.phase === "settling") state.settleAge += dt;
+        const damping = state.phase === "settling"
+          ? 1.3 - .5 * state.impactEnergy
+          : config.dampingRide;
+        const angularAcceleration = -config.gravity * Math.sin(state.angle) - damping * state.angularVelocity - acceleration * 4.8;
+        state.angularVelocity += angularAcceleration * dt;
+        state.angle += state.angularVelocity * dt;
+
+        const minimumSettleTime = 1.6 + 1.8 * state.impactEnergy;
+        if (state.phase === "settling" && state.settleAge > minimumSettleTime && Math.abs(state.angle) < .012 && Math.abs(state.angularVelocity) < .022) {
+          state.angle = 0;
+          state.angularVelocity = 0;
+          state.phase = "settled";
+          status.textContent = "这一趟结束了。可以再玩一次。";
+        }
+      }
+
+      function tick(now) {
+        const elapsed = Math.min(.05, Math.max(0, (now - state.lastTime) / 1000));
+        state.lastTime = now;
+        if (!state.sleeping) {
+          state.accumulator = Math.min(.12, state.accumulator + elapsed);
+          while (state.accumulator >= config.fixedStep) {
+            step(config.fixedStep);
+            state.accumulator -= config.fixedStep;
+          }
+          render();
+        }
+        requestAnimationFrame(tick);
+      }
+
+      function reset() {
+        state.phase = "idle";
+        state.progress = config.start;
+        state.velocity = 0;
+        state.angle = 0;
+        state.angularVelocity = 0;
+        state.launchEnergy = 0;
+        state.targetProgress = config.softEnd;
+        state.impactEnergy = 0;
+        state.impactAge = 0;
+        state.settleAge = 0;
+        state.accumulator = 0;
+        status.textContent = "滑索已经回到起点。";
+        grabTarget.focus({ preventScroll: true });
+        render();
+      }
+
+      grabTarget.addEventListener("pointerdown", beginDrag);
+      grabTarget.addEventListener("pointermove", updateDrag);
+      grabTarget.addEventListener("pointerup", releaseDrag);
+      grabTarget.addEventListener("pointercancel", releaseDrag);
+
+      grabTarget.addEventListener("keydown", (event) => {
+        if (state.phase !== "idle" && state.phase !== "dragging") return;
+        if (["ArrowLeft", "ArrowUp"].includes(event.key)) {
+          event.preventDefault();
+          state.phase = "dragging";
+          state.angle = Math.max(-config.maxAngle, state.angle - .12);
+          state.launchEnergy = Math.min(1, Math.abs(state.angle) / config.maxAngle);
+          state.progress = config.start * (1 - state.launchEnergy);
+          render();
+        } else if (["ArrowRight", "ArrowDown"].includes(event.key)) {
+          event.preventDefault();
+          state.phase = "dragging";
+          state.angle = Math.min(0, state.angle + .12);
+          state.launchEnergy = Math.min(1, Math.abs(state.angle) / config.maxAngle);
+          state.progress = config.start * (1 - state.launchEnergy);
+          render();
+        } else if ((event.key === " " || event.key === "Enter") && state.phase === "dragging") {
+          event.preventDefault();
+          releaseDrag();
+        }
+      });
+
+      resetButton.addEventListener("click", reset);
+      addEventListener("resize", measure, { passive: true });
+
+      // If embedded, hide chrome and set up auto-trigger fallback
+      if (window.parent !== window || new URLSearchParams(location.search).get("embedded")) {
+        document.documentElement.dataset.embedded = "";
+        let userInteracted = false;
+        grabTarget.addEventListener("pointerdown", () => { userInteracted = true; }, { once: true });
+        setTimeout(() => {
+          if (!userInteracted && (state.phase === "idle" || state.phase === "dragging")) {
+            state.phase = "dragging";
+            state.angle = -config.maxAngle * 0.72;
+            state.launchEnergy = 0.72;
+            state.progress = config.start * (1 - state.launchEnergy);
+            render();
+            setTimeout(() => releaseDrag(), 400);
+          }
+        }, 5000);
+      }
+      document.addEventListener("visibilitychange", () => {
+        state.sleeping = document.hidden;
+        state.lastTime = performance.now();
+        state.accumulator = 0;
+      });
+
+      measure();
+      requestAnimationFrame(tick);
+    })();
+  </script>
+</body>
+</html>

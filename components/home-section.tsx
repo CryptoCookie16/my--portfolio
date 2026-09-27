@@ -1,11 +1,59 @@
 "use client"
 
+import { useEffect, useRef, useState } from "react"
 import { useLang } from "@/lib/lang-context"
 
 export function HomeSection() {
   const { t } = useLang()
+  const [showIntro, setShowIntro] = useState(false)
+  const [fading, setFading] = useState(false)
+  const iframeRef = useRef<HTMLIFrameElement>(null)
+
+  useEffect(() => {
+    try {
+      if (!sessionStorage.getItem("cableway_seen")) {
+        setShowIntro(true)
+      }
+    } catch {}
+  }, [])
+
+  useEffect(() => {
+    if (!showIntro) return
+    const handler = (e: MessageEvent) => {
+      if (e.data === "cableway:done") {
+        setFading(true)
+        setTimeout(() => {
+          setShowIntro(false)
+          try { sessionStorage.setItem("cableway_seen", "1") } catch {}
+        }, 1100)
+      }
+    }
+    window.addEventListener("message", handler)
+    return () => window.removeEventListener("message", handler)
+  }, [showIntro])
 
   return (
+    <>
+      {showIntro && (
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 9999,
+            background: "#f7f3ea",
+            opacity: fading ? 0 : 1,
+            transition: "opacity 1.1s ease",
+            pointerEvents: fading ? "none" : "auto",
+          }}
+        >
+          <iframe
+            ref={iframeRef}
+            src="/cableway/index.html?style=marker&embedded=1"
+            style={{ width: "100%", height: "100%", border: "none" }}
+            title="滑索"
+          />
+        </div>
+      )}
     <section
       id="home"
       className="min-h-screen flex flex-col items-center justify-center px-6 pt-20 relative"
@@ -62,5 +110,6 @@ export function HomeSection() {
         </div>
       </div>
     </section>
+    </>
   )
 }
