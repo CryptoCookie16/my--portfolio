@@ -572,10 +572,7 @@
     html[data-embedded] .masthead,
     html[data-embedded] .credit { display: none; }
 
-    /* Let support frames extend beyond scene boundary */
-    html[data-embedded] .scene { overflow: visible; border-radius: 0; }
-
-    /* Pull frames inward only on desktop (where iframe is scaled down) */
+    /* Pull frames inward on desktop (iframe is scaled, avoid viewport clip) */
     @media (min-width: 640px) {
       html[data-embedded][data-style="marker"] .support-left { left: 1% !important; }
       html[data-embedded][data-style="marker"] .support-right { right: 1% !important; }
