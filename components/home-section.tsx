@@ -97,7 +97,7 @@ export function HomeSection() {
                 width: "100%",
                 height: "100%",
                 border: "none",
-                transform: typeof window !== "undefined" && window.innerWidth < 640 ? "scale(0.72)" : "scale(0.55)",
+                transform: typeof window !== "undefined" && window.innerWidth < 640 ? "none" : "scale(0.55)",
                 transformOrigin: "center center",
               }}
               title="滑索"
