@@ -571,6 +571,9 @@
     /* Hide UI chrome when embedded */
     html[data-embedded] .masthead,
     html[data-embedded] .credit { display: none; }
+
+    /* Let support frames extend beyond scene boundary */
+    html[data-embedded] .scene { overflow: visible; border-radius: 0; }
   </style>
 </head>
 <body>
