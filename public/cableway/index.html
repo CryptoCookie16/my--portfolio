@@ -574,6 +574,10 @@
 
     /* Let support frames extend beyond scene boundary */
     html[data-embedded] .scene { overflow: visible; border-radius: 0; }
+
+    /* Pull frames inward so they don't get clipped by iframe viewport */
+    html[data-embedded][data-style="marker"] .support-left { left: 1% !important; }
+    html[data-embedded][data-style="marker"] .support-right { right: 1% !important; }
   </style>
 </head>
 <body>
