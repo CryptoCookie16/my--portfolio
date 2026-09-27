@@ -572,19 +572,6 @@
     html[data-embedded] .masthead,
     html[data-embedded] .credit { display: none; }
 
-    /* Pull frames inward on desktop (iframe is scaled, avoid viewport clip) */
-    @media (min-width: 640px) {
-      html[data-embedded][data-style="marker"] .support-left { left: 1% !important; }
-      html[data-embedded][data-style="marker"] .support-right { right: 1% !important; }
-    }
-
-    /* Mobile: scale the scene internally so geometry + frames stay in sync */
-    @media (max-width: 639px) {
-      html[data-embedded] .prototype {
-        transform: scale(0.68);
-        transform-origin: 50% 36%;
-      }
-    }
   </style>
 </head>
 <body>

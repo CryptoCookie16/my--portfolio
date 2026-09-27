@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { useLang } from "@/lib/lang-context"
+import { WaveLink } from "@/components/wave-link"
 
 const navKeys = [
   { key: "home",     href: "#home" },
@@ -75,7 +76,7 @@ export function Navigation() {
         <div className="hidden md:flex relative items-center justify-center">
           <div className="flex items-center gap-8 font-mono text-xs tracking-[0.2em] uppercase">
             {navKeys.map((item) => (
-              <a
+              <WaveLink
                 key={item.href}
                 href={item.href}
                 onClick={(e) => handleClick(e, item.href)}
@@ -86,7 +87,7 @@ export function Navigation() {
                 }`}
               >
                 {t.nav[item.key]}
-              </a>
+              </WaveLink>
             ))}
           </div>
           <button

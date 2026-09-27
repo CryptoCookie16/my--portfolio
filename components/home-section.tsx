@@ -97,7 +97,7 @@ export function HomeSection() {
                 width: "100%",
                 height: "100%",
                 border: "none",
-                transform: typeof window !== "undefined" && window.innerWidth < 640 ? "none" : "scale(0.55)",
+                transform: typeof window !== "undefined" && window.innerWidth < 640 ? "scale(0.65)" : "scale(0.55)",
                 transformOrigin: "center center",
               }}
               title="滑索"
@@ -111,7 +111,7 @@ export function HomeSection() {
             pointerEvents: "none",
             opacity: fading ? 0 : 1,
             transition: fading ? "opacity 1.1s ease" : undefined,
-            background: "linear-gradient(to right, #f7f3ea 0%, transparent 18%, transparent 82%, #f7f3ea 100%)",
+            background: "linear-gradient(to right, #f7f3ea 0%, transparent 24%, transparent 76%, #f7f3ea 100%)",
           }} />
         </>
       )}
