@@ -7,8 +7,9 @@ export function HomeSection() {
   const { t } = useLang()
   const [showIntro, setShowIntro] = useState(false)
   const [fading, setFading] = useState(false)
-  const [cableProgress, setCableProgress] = useState(0)
+  const overlayRef = useRef<HTMLDivElement>(null)
   const iframeRef = useRef<HTMLIFrameElement>(null)
+  const lerpRef = useRef({ current: 0, target: 0, rafId: 0, started: false })
 
   useEffect(() => {
     try {
@@ -18,18 +19,49 @@ export function HomeSection() {
     } catch {}
   }, [])
 
+  // RAF loop: lerp toward target progress, update mask-image directly on DOM
   useEffect(() => {
     if (!showIntro) return
+    const lerp = lerpRef.current
+
+    function animate() {
+      lerp.current += (lerp.target - lerp.current) * 0.025 // slow lag
+      const pct = lerp.current * 100
+      const softEdge = 28 // width of the gradient soft zone (%)
+      const edgeLeft = Math.max(0, pct - softEdge)
+      const edgeRight = Math.min(100, pct + softEdge * 0.15)
+      const mask = pct > 1
+        ? `linear-gradient(to right, transparent 0%, transparent ${edgeLeft.toFixed(1)}%, black ${edgeRight.toFixed(1)}%, black 100%)`
+        : "black"
+      if (overlayRef.current) {
+        overlayRef.current.style.maskImage = mask
+        ;(overlayRef.current.style as CSSStyleDeclaration & { webkitMaskImage: string }).webkitMaskImage = mask
+      }
+      lerp.rafId = requestAnimationFrame(animate)
+    }
+
+    lerp.rafId = requestAnimationFrame(animate)
+    return () => cancelAnimationFrame(lerp.rafId)
+  }, [showIntro])
+
+  useEffect(() => {
+    if (!showIntro) return
+    const lerp = lerpRef.current
     const handler = (e: MessageEvent) => {
       if (!e.data || typeof e.data !== "object") return
       if (e.data.type === "cableway:progress") {
-        setCableProgress(e.data.progress as number)
+        const raw = e.data.progress as number
+        const start = 0.07, end = 0.89
+        lerp.target = Math.max(0, Math.min(1, (raw - start) / (end - start)))
       } else if (e.data.type === "cableway:done") {
-        setFading(true)
+        lerp.target = 1
         setTimeout(() => {
-          setShowIntro(false)
-          try { sessionStorage.setItem("cableway_seen", "1") } catch {}
-        }, 1100)
+          setFading(true)
+          setTimeout(() => {
+            setShowIntro(false)
+            try { sessionStorage.setItem("cableway_seen", "1") } catch {}
+          }, 1100)
+        }, 600) // wait for lerp to finish before fading
       }
     }
     window.addEventListener("message", handler)
@@ -40,18 +72,14 @@ export function HomeSection() {
     <>
       {showIntro && (
         <div
+          ref={overlayRef}
           style={{
             position: "fixed",
             inset: 0,
             zIndex: 9999,
             background: "#f7f3ea",
-            clipPath: (() => {
-              const start = 0.07, end = 0.89
-              const pct = Math.round(Math.max(0, Math.min(1, (cableProgress - start) / (end - start))) * 100)
-              return pct > 2 ? `inset(0 0 0 ${pct}%)` : undefined
-            })(),
-            transition: fading ? "opacity 1.1s ease" : "clip-path 0.12s linear",
             opacity: fading ? 0 : 1,
+            transition: fading ? "opacity 1.1s ease" : undefined,
             pointerEvents: fading ? "none" : "auto",
           }}
         >
