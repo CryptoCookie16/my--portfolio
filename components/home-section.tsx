@@ -25,7 +25,7 @@ export function HomeSection() {
     const lerp = lerpRef.current
 
     function animate() {
-      lerp.current += (lerp.target - lerp.current) * 0.014 // slow lag
+      lerp.current += (lerp.target - lerp.current) * 0.009 // slow lag
       const pct = lerp.current * 100
       const softEdge = 28 // width of the gradient soft zone (%)
       const edgeLeft = Math.max(0, pct - softEdge)
@@ -95,6 +95,13 @@ export function HomeSection() {
             }}
             title="滑索"
           />
+          {/* Fade out hard-clipped edges of the support frames */}
+          <div style={{
+            position: "absolute",
+            inset: 0,
+            pointerEvents: "none",
+            background: "linear-gradient(to right, #f7f3ea 0%, transparent 14%, transparent 86%, #f7f3ea 100%)",
+          }} />
         </div>
       )}
     <section
