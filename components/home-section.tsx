@@ -71,38 +71,44 @@ export function HomeSection() {
   return (
     <>
       {showIntro && (
-        <div
-          ref={overlayRef}
-          style={{
+        <>
+          {/* Masked overlay — iframe slides away left-to-right */}
+          <div
+            ref={overlayRef}
+            style={{
+              position: "fixed",
+              inset: 0,
+              zIndex: 9999,
+              background: "#f7f3ea",
+              opacity: fading ? 0 : 1,
+              transition: fading ? "opacity 1.1s ease" : undefined,
+              pointerEvents: fading ? "none" : "auto",
+            }}
+          >
+            <iframe
+              ref={iframeRef}
+              src="/cableway/index.html?style=marker&embedded=1"
+              style={{
+                width: "100%",
+                height: "100%",
+                border: "none",
+                transform: "scale(0.55)",
+                transformOrigin: "center center",
+              }}
+              title="滑索"
+            />
+          </div>
+          {/* Edge fades — sit OUTSIDE the masked overlay so they always cover the clipped frame legs */}
+          <div style={{
             position: "fixed",
             inset: 0,
-            zIndex: 9999,
-            background: "#f7f3ea",
+            zIndex: 10000,
+            pointerEvents: "none",
             opacity: fading ? 0 : 1,
             transition: fading ? "opacity 1.1s ease" : undefined,
-            pointerEvents: fading ? "none" : "auto",
-          }}
-        >
-          <iframe
-            ref={iframeRef}
-            src="/cableway/index.html?style=marker&embedded=1"
-            style={{
-              width: "100%",
-              height: "100%",
-              border: "none",
-              transform: "scale(0.55)",
-              transformOrigin: "center center",
-            }}
-            title="滑索"
-          />
-          {/* Fade out hard-clipped edges of the support frames */}
-          <div style={{
-            position: "absolute",
-            inset: 0,
-            pointerEvents: "none",
-            background: "linear-gradient(to right, #f7f3ea 0%, transparent 14%, transparent 86%, #f7f3ea 100%)",
+            background: "linear-gradient(to right, #f7f3ea 0%, transparent 18%, transparent 82%, #f7f3ea 100%)",
           }} />
-        </div>
+        </>
       )}
     <section
       id="home"
