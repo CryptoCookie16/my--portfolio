@@ -23,19 +23,23 @@ export function HomeSection() {
   useEffect(() => {
     if (!showIntro) return
     const lerp = lerpRef.current
+    const isMobile = window.innerWidth < 640
 
     function animate() {
       lerp.current += (lerp.target - lerp.current) * 0.009 // slow lag
-      const pct = lerp.current * 100
-      const softEdge = 28 // width of the gradient soft zone (%)
-      const edgeLeft = Math.max(0, pct - softEdge)
-      const edgeRight = Math.min(100, pct + softEdge * 0.15)
-      const mask = pct > 1
-        ? `linear-gradient(to right, transparent 0%, transparent ${edgeLeft.toFixed(1)}%, black ${edgeRight.toFixed(1)}%, black 100%)`
-        : "black"
-      if (overlayRef.current) {
-        overlayRef.current.style.maskImage = mask
-        ;(overlayRef.current.style as CSSStyleDeclaration & { webkitMaskImage: string }).webkitMaskImage = mask
+      // Mobile: no wipe, just let the fade handle it
+      if (!isMobile) {
+        const pct = lerp.current * 100
+        const softEdge = 28
+        const edgeLeft = Math.max(0, pct - softEdge)
+        const edgeRight = Math.min(100, pct + softEdge * 0.15)
+        const mask = pct > 1
+          ? `linear-gradient(to right, transparent 0%, transparent ${edgeLeft.toFixed(1)}%, black ${edgeRight.toFixed(1)}%, black 100%)`
+          : "black"
+        if (overlayRef.current) {
+          overlayRef.current.style.maskImage = mask
+          ;(overlayRef.current.style as CSSStyleDeclaration & { webkitMaskImage: string }).webkitMaskImage = mask
+        }
       }
       lerp.rafId = requestAnimationFrame(animate)
     }
@@ -55,13 +59,14 @@ export function HomeSection() {
         lerp.target = Math.max(0, Math.min(1, (raw - start) / (end - start)))
       } else if (e.data.type === "cableway:done") {
         lerp.target = 1
+        const isMobile = window.innerWidth < 640
         setTimeout(() => {
           setFading(true)
           setTimeout(() => {
             setShowIntro(false)
             try { sessionStorage.setItem("cableway_seen", "1") } catch {}
           }, 1100)
-        }, 600) // wait for lerp to finish before fading
+        }, isMobile ? 300 : 600)
       }
     }
     window.addEventListener("message", handler)
@@ -92,7 +97,7 @@ export function HomeSection() {
                 width: "100%",
                 height: "100%",
                 border: "none",
-                transform: "scale(0.55)",
+                transform: typeof window !== "undefined" && window.innerWidth < 640 ? "none" : "scale(0.55)",
                 transformOrigin: "center center",
               }}
               title="滑索"
