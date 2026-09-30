@@ -1,13 +1,14 @@
 "use client"
 
 import { useLang } from "@/lib/lang-context"
+import { CablewayPlaySection } from "@/components/cableway-play-section"
 
 export function ContactSection() {
   const { t } = useLang()
 
   return (
-    <section id="contact" className="min-h-[70vh] flex items-center px-6 py-32">
-      <div className="max-w-2xl mx-auto text-center">
+    <section id="contact" className="min-h-[70vh] overflow-hidden py-24 md:py-28">
+      <div className="max-w-2xl mx-auto px-6 text-center">
         {/* Section header */}
         <div className="mb-16">
           <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-muted-foreground block mb-2">
@@ -31,23 +32,23 @@ export function ContactSection() {
         </div>
 
         {/* CV buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        <div className="flex items-center justify-center mb-16">
           <a
-            href="#"
+            href="/documents/qi-ziyun-cv.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group border border-foreground px-6 py-3 font-mono text-[10px] tracking-[0.2em] uppercase transition-all duration-300 hover:bg-foreground hover:text-background"
           >
             {t.contact.academicCV}{" "}
             <span className="inline-block transition-transform group-hover:translate-y-0.5">↓</span>
           </a>
-          <a
-            href="#"
-            className="group border border-foreground px-6 py-3 font-mono text-[10px] tracking-[0.2em] uppercase transition-all duration-300 hover:bg-foreground hover:text-background"
-          >
-            {t.contact.creativeCV}{" "}
-            <span className="inline-block transition-transform group-hover:translate-y-0.5">↓</span>
-          </a>
         </div>
 
+      </div>
+
+      <CablewayPlaySection />
+
+      <div className="max-w-2xl mx-auto px-6 text-center">
         {/* Decorative footer */}
         <div className="pt-16 border-t border-foreground/20">
           <div className="flex items-center justify-center gap-4 mb-6">

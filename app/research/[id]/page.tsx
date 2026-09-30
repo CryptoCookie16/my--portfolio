@@ -5,6 +5,7 @@ import Image from "next/image"
 import { Navigation } from "@/components/navigation"
 import { useLang } from "@/lib/lang-context"
 import { getResearchDetail } from "@/lib/research-data"
+import { PhotoShuffler } from "@/components/photo-shuffler"
 
 export default function ResearchDetailPage({
   params,
@@ -99,7 +100,16 @@ export default function ResearchDetailPage({
         ))}
 
         {/* ── Visual Archive ─────────────────────────────────── */}
-        {content.images.length > 0 && (
+        {params.id === "roadside-shrines-hong-kong" && content.images.length > 0 && (
+          <div className="mb-24">
+            <PhotoShuffler
+              images={content.images}
+              counterLabel={lang === "zh" ? "田野照片" : "Field photograph"}
+            />
+          </div>
+        )}
+
+        {params.id !== "roadside-shrines-hong-kong" && content.images.length > 0 && (
           <div className="mb-20">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               {content.images.map((img, i) => (

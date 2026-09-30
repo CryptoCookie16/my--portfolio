@@ -28,13 +28,13 @@ export const dict = {
       footer: "— Selected projects, 2019–present —",
       projects: [
         {
-          id: "fern-fieldwork",
+          id: "roadside-shrines-hong-kong",
           number: "01",
-          title: "Fern Fieldwork",
+          title: "Roadside Shrines of Hong Kong",
           titleSub: null as string | null,
           description:
-            "Ongoing capstone. Multispecies and sensory ethnography in Gaoligong Mountain, Yunnan.",
-          tags: ["Multispecies Ethnography", "Sensory Methods", "Plant Studies"],
+            "The Porous Sacred, my formal MA capstone project, examines Hong Kong's roadside shrines as porous spaces sustained by everyday practice.",
+          tags: ["Urban Anthropology", "Space", "Religion"],
         },
         {
           id: "where-ferns-touch-flesh",
@@ -46,22 +46,22 @@ export const dict = {
           tags: ["Queer Ecology", "Affect Theory", "Art Criticism"],
         },
         {
-          id: "roadside-shrines-hong-kong",
-          number: "03",
-          title: "Roadside Shrines of Hong Kong",
-          titleSub: null as string | null,
-          description:
-            "Essay on vernacular sacred space, tactics of the everyday, and urban religion.",
-          tags: ["Urban Anthropology", "Space", "Religion"],
-        },
-        {
           id: "waiting-for-a-diagnosis",
-          number: "04",
+          number: "03",
           title: "Waiting for a Diagnosis",
           titleSub: null as string | null,
           description:
             "Policy-oriented research on the underdiagnosis of ADHD among adult women and gender bias in diagnostic frameworks.",
           tags: ["Gender", "Disability Studies", "Public Health"],
+        },
+        {
+          id: "fern-fieldwork",
+          number: "04",
+          title: "Fern Fieldwork",
+          titleSub: null as string | null,
+          description:
+            "Preliminary field research; its final form is still open.",
+          tags: ["Multispecies Ethnography", "Sensory Methods", "Plant Studies"],
         },
       ],
     },
@@ -87,9 +87,9 @@ export const dict = {
           id: "field-ferment-zine",
           title: "Field & Ferment Zine: January, March, March",
           subtitle:
-            "Fieldwork interviews at Duke Farm and NC Chinese-operated farms, exploring fermentation, memory, and minority food culture.",
+            "From working the soil at Duke Campus Farm and interviewing a Chinese-run ecological farm to tracing homemade infused liquor in Yunnan and Shanghai—a food ethnography zine shaped through fieldwork, photography, and writing.",
           filmType: "Zine",
-          previewImage: "/images/creative/Zine/zine1.png",
+          previewImage: "/images/creative/Zine/january-march-march-mockup.png",
           previewFull: true,
         },
         {
@@ -105,9 +105,8 @@ export const dict = {
     contact: {
       sectionTitle: "Contact",
       correspondence: "Correspondence",
-      academicCV: "Academic CV",
-      creativeCV: "Creative CV",
-      copyright: "© 2024 Ziyun Qi",
+      academicCV: "CV",
+      copyright: "© 2026 Ziyun Qi",
       fontCredit: "Set in Cormorant Garamond",
     },
   },
@@ -135,40 +134,39 @@ export const dict = {
       footer: "—— 精选课题，2019 年至今 ——",
       projects: [
         {
-          id: "fern-fieldwork",
+          id: "roadside-shrines-hong-kong",
           number: "01",
-          title: "蕨类田野",
-          titleSub: "Fern Fieldwork",
+          title: "多孔的神圣空间",
+          titleSub: "The Porous Sacred",
           description:
-            "进行中的毕业课题。在云南高黎贡山展开的多物种感官民族志田野研究。",
-          tags: ["多物种民族志", "感官方法论", "植物研究"],
+            "正式硕士毕业项目《The Porous Sacred》，研究香港路边神龛如何在日常实践中形成多孔而持续的神圣空间。",
+          tags: ["城市人类学", "空间研究", "宗教"],
         },
         {
           id: "where-ferns-touch-flesh",
           number: "02",
-          title: "当蕨类接触肉身",
+          title: "蕨类、身体与跨物种亲密",
           titleSub: "Where Ferns Touch Flesh",
           description:
             "发表于加州大学圣地亚哥分校研究生学术会议，2026年5月。以后人类主义、酷儿生态学与情动理论解读郑波的《蕨恋》。",
           tags: ["酷儿生态学", "情动理论", "艺术批评"],
         },
         {
-          id: "roadside-shrines-hong-kong",
-          number: "03",
-          title: "香港路边神龛",
-          titleSub: "Roadside Shrines of Hong Kong",
-          description:
-            "探讨民间圣域、日常生活策略与城市宗教性的田野书写。",
-          tags: ["城市人类学", "空间研究", "宗教"],
-        },
-        {
           id: "waiting-for-a-diagnosis",
-          number: "04",
-          title: "等待一个诊断",
+          number: "03",
+          title: "被遗漏的注意力",
           titleSub: "Waiting for a Diagnosis",
           description:
             "关于成年女性ADHD漏诊问题与诊断框架中性别偏见的政策导向研究。",
           tags: ["性别研究", "残障研究", "公共卫生"],
+        },
+        {
+          id: "fern-fieldwork",
+          number: "04",
+          title: "与蕨同行：云南田野笔记",
+          titleSub: "Fern Fieldwork",
+          description: "前期田野研究，产出待定。",
+          tags: ["多物种民族志", "感官方法论", "植物研究"],
         },
       ],
     },
@@ -193,9 +191,9 @@ export const dict = {
           id: "field-ferment-zine",
           title: "田野与发酵：一月，三月，三月",
           subtitle:
-            "在杜克农场及北卡罗来纳州华裔农场进行的田野访谈，探索发酵、记忆与少数族裔饮食文化。",
+            "从杜克农场的劳作、华人生态农场主的访谈，到云南与上海的自泡酒调查：一本由田野、摄影与写作共同长出来的食物民族志 zine。",
           filmType: "独立刊物",
-          previewImage: "/images/creative/Zine/zine1.png",
+          previewImage: "/images/creative/Zine/january-march-march-mockup.png",
           previewFull: true,
         },
         {
@@ -210,9 +208,8 @@ export const dict = {
     contact: {
       sectionTitle: "联系",
       correspondence: "联络方式",
-      academicCV: "学术简历",
-      creativeCV: "创作简历",
-      copyright: "© 2024 戚紫云",
+      academicCV: "简历",
+      copyright: "© 2026 戚紫云",
       fontCredit: "以 Cormorant Garamond 字体排版",
     },
   },

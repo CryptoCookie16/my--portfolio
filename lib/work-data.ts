@@ -85,7 +85,7 @@ export const workDetails: WorkDetail[] = [
   },
   {
     id: "field-ferment-zine",
-    heroImage: "",
+    heroImage: "/images/creative/Zine/january-march-march-mockup.png",
     collageImages: [
       { src: "/images/creative/Zine/zine1.png", rotate: -3 },
       { src: "/images/creative/Zine/zine2.png", rotate: 2 },
@@ -94,12 +94,12 @@ export const workDetails: WorkDetail[] = [
     embedCode: `<div style="position:relative;padding-top:max(60%,324px);width:100%;height:0;"><iframe style="position:absolute;border:none;width:100%;height:100%;left:0;top:0;" src="https://online.fliphtml5.com/JMMZine/yyqt/" title="January, March, March; A Farm Working Zine_compressed" seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" ></iframe></div>`,
     en: {
       title: "Field & Ferment Zine: January, March, March",
-      description: "A zine about cultivation, people, and plants—documenting fieldwork at Duke Campus Farm and Chinese-operated farms across North Carolina. Through interviews and sensory observation, it explores how minority communities preserve memory, kinship, and food culture through the labor of the land. Duke University, Spring 2026.",
+      description: "January, March, March is a food ethnography zine I independently conceived, photographed, wrote, and designed. It grew out of three rounds of participant fieldwork: working at Duke Campus Farm, sitting down for an in-depth interview with a Chinese ecological farmer, and gathering first-hand text and images along the way. A second thread, “Food That Refuses Standardization,” follows homemade infused liquor in Yunnan and Shanghai, placing those observations beside questions of U.S. food regulation and Indigenous food sovereignty. The finished zine spans more than thirty spreads, bringing field notes, interviews, photographs, and visual design into one personal record.",
       images: [],
     },
     zh: {
       title: "田野与发酵：一月，三月，三月",
-      description: "一本关于种植、人与植物的zine，记录在杜克校园农场及北卡罗来纳州华裔农场的田野工作。通过访谈与感官观察，讨论少数族裔社群如何在劳动中，留存记忆、亲缘与饮食文化。杜克大学，2026年春。",
+      description: "《January, March, March》是一册由我独立策划与制作的食物民族志 zine。它从三次农场参与式田野开始：我在杜克农场劳作，也走访并深度访谈华人生态农场主，留下文字与影像记录。专题「无法标准化的食物」则把云南、上海两地的自泡酒观察，与美国食品监管和原住民食物主权放在一起思考。全书的摄影、撰稿、访谈整理和版式设计都由我完成，最终做成三十余个跨页。",
       images: [],
     },
   },

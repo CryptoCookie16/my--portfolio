@@ -1,120 +1,11 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
 import { useLang } from "@/lib/lang-context"
 
 export function HomeSection() {
   const { t } = useLang()
-  const [showIntro, setShowIntro] = useState(false)
-  const [fading, setFading] = useState(false)
-  const overlayRef = useRef<HTMLDivElement>(null)
-  const iframeRef = useRef<HTMLIFrameElement>(null)
-  const lerpRef = useRef({ current: 0, target: 0, rafId: 0, started: false })
-
-  useEffect(() => {
-    try {
-      if (!sessionStorage.getItem("cableway_seen")) {
-        setShowIntro(true)
-      }
-    } catch {}
-  }, [])
-
-  // RAF loop: lerp toward target progress, update mask-image directly on DOM
-  useEffect(() => {
-    if (!showIntro) return
-    const lerp = lerpRef.current
-    const isMobile = window.innerWidth < 640
-
-    function animate() {
-      lerp.current += (lerp.target - lerp.current) * 0.009 // slow lag
-      // Mobile: no wipe, just let the fade handle it
-      if (!isMobile) {
-        const pct = lerp.current * 100
-        const softEdge = 28
-        const edgeLeft = Math.max(0, pct - softEdge)
-        const edgeRight = Math.min(100, pct + softEdge * 0.15)
-        const mask = pct > 1
-          ? `linear-gradient(to right, transparent 0%, transparent ${edgeLeft.toFixed(1)}%, black ${edgeRight.toFixed(1)}%, black 100%)`
-          : "black"
-        if (overlayRef.current) {
-          overlayRef.current.style.maskImage = mask
-          ;(overlayRef.current.style as CSSStyleDeclaration & { webkitMaskImage: string }).webkitMaskImage = mask
-        }
-      }
-      lerp.rafId = requestAnimationFrame(animate)
-    }
-
-    lerp.rafId = requestAnimationFrame(animate)
-    return () => cancelAnimationFrame(lerp.rafId)
-  }, [showIntro])
-
-  useEffect(() => {
-    if (!showIntro) return
-    const lerp = lerpRef.current
-    const handler = (e: MessageEvent) => {
-      if (!e.data || typeof e.data !== "object") return
-      if (e.data.type === "cableway:progress") {
-        const raw = e.data.progress as number
-        const start = 0.07, end = 0.89
-        lerp.target = Math.max(0, Math.min(1, (raw - start) / (end - start)))
-      } else if (e.data.type === "cableway:done") {
-        lerp.target = 1
-        const isMobile = window.innerWidth < 640
-        setTimeout(() => {
-          setFading(true)
-          setTimeout(() => {
-            setShowIntro(false)
-            try { sessionStorage.setItem("cableway_seen", "1") } catch {}
-          }, 1100)
-        }, isMobile ? 300 : 600)
-      }
-    }
-    window.addEventListener("message", handler)
-    return () => window.removeEventListener("message", handler)
-  }, [showIntro])
 
   return (
-    <>
-      {showIntro && (
-        <>
-          {/* Masked overlay — iframe slides away left-to-right */}
-          <div
-            ref={overlayRef}
-            style={{
-              position: "fixed",
-              inset: 0,
-              zIndex: 9999,
-              background: "#f7f3ea",
-              opacity: fading ? 0 : 1,
-              transition: fading ? "opacity 1.1s ease" : undefined,
-              pointerEvents: fading ? "none" : "auto",
-            }}
-          >
-            <iframe
-              ref={iframeRef}
-              src="/cableway/index.html?style=marker&embedded=1"
-              style={{
-                width: "100%",
-                height: "100%",
-                border: "none",
-                transform: typeof window !== "undefined" && window.innerWidth < 640 ? "scale(0.65)" : "scale(0.55)",
-                transformOrigin: "center center",
-              }}
-              title="滑索"
-            />
-          </div>
-          {/* Edge fades — sit OUTSIDE the masked overlay so they always cover the clipped frame legs */}
-          <div style={{
-            position: "fixed",
-            inset: 0,
-            zIndex: 10000,
-            pointerEvents: "none",
-            opacity: fading ? 0 : 1,
-            transition: fading ? "opacity 1.1s ease" : undefined,
-            background: "linear-gradient(to right, #f7f3ea 0%, transparent 24%, transparent 76%, #f7f3ea 100%)",
-          }} />
-        </>
-      )}
     <section
       id="home"
       className="min-h-screen flex flex-col items-center justify-center px-6 pt-20 relative"
@@ -171,6 +62,5 @@ export function HomeSection() {
         </div>
       </div>
     </section>
-    </>
   )
 }

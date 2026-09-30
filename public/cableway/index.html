@@ -572,6 +572,25 @@
     html[data-embedded] .masthead,
     html[data-embedded] .credit { display: none; }
 
+    /* Give the embedded scene breathing room and lower its visual weight. */
+    html[data-embedded][data-style="marker"] .scene {
+      transform: translateY(6vh);
+    }
+    html[data-embedded][data-style="marker"] .support-left {
+      left: 4vw;
+    }
+    html[data-embedded][data-style="marker"] .support-right {
+      right: 4vw;
+    }
+
+    @media (max-width: 650px) {
+      html[data-embedded][data-style="marker"] .support-image {
+        width: clamp(118px, 30vw, 180px);
+      }
+      html[data-embedded][data-style="marker"] .support-left { left: 5vw; }
+      html[data-embedded][data-style="marker"] .support-right { right: 5vw; }
+    }
+
   </style>
 </head>
 <body>
@@ -701,7 +720,11 @@
         document.documentElement.classList.add("ink-assets-ready");
       }
 
-      const requestedStyle = new URLSearchParams(location.search).get("style");
+      const pageParams = new URLSearchParams(location.search);
+      const isEmbedded = window.parent !== window || pageParams.has("embedded");
+      if (isEmbedded) document.documentElement.dataset.embedded = "";
+
+      const requestedStyle = pageParams.get("style");
       const visualStyle = requestedStyle === "marker" || requestedStyle === "ink" ? requestedStyle : "default";
       if (visualStyle !== "default") {
         document.documentElement.dataset.style = visualStyle;
@@ -773,8 +796,8 @@
           geometry.startY = rect.height * (innerWidth < 650 ? .265 : .208);
           geometry.endY = rect.height * (innerWidth < 650 ? .307 : .247);
         } else if (visualStyle === "marker") {
-          geometry.startX = rect.width * (innerWidth < 650 ? .108 : .112);
-          geometry.endX = rect.width * (innerWidth < 650 ? .925 : .92);
+          geometry.startX = rect.width * (isEmbedded ? (innerWidth < 650 ? .19 : .13) : (innerWidth < 650 ? .108 : .112));
+          geometry.endX = rect.width * (isEmbedded ? (innerWidth < 650 ? .81 : .882) : (innerWidth < 650 ? .925 : .92));
           geometry.startY = rect.height * (innerWidth < 650 ? .225 : .175);
           geometry.endY = rect.height * (innerWidth < 650 ? .265 : .22);
         } else {
@@ -1018,9 +1041,8 @@
       resetButton.addEventListener("click", reset);
       addEventListener("resize", measure, { passive: true });
 
-      // If embedded, hide chrome and set up auto-trigger fallback
-      if (window.parent !== window || new URLSearchParams(location.search).get("embedded")) {
-        document.documentElement.dataset.embedded = "";
+      // The closing-page version remains still until someone chooses to play.
+      if (isEmbedded && pageParams.get("autoplay") !== "0") {
         let userInteracted = false;
         grabTarget.addEventListener("pointerdown", () => { userInteracted = true; }, { once: true });
         setTimeout(() => {

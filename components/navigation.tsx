@@ -79,6 +79,7 @@ export function Navigation() {
               <WaveLink
                 key={item.href}
                 href={item.href}
+                dataLang={lang}
                 onClick={(e) => handleClick(e, item.href)}
                 className={`transition-all duration-300 hover:text-foreground ${
                   activeSection === item.href.slice(1)
