@@ -6,6 +6,7 @@ import { Navigation } from "@/components/navigation"
 import { useLang } from "@/lib/lang-context"
 import { getResearchDetail } from "@/lib/research-data"
 import { PhotoShuffler } from "@/components/photo-shuffler"
+import { PorousSacredPaper } from "@/components/porous-sacred-paper"
 
 export default function ResearchDetailPage({
   params,
@@ -78,12 +79,20 @@ export default function ResearchDetailPage({
             </p>
           ))}
         </div>
-        <p className="font-mono text-[9px] tracking-[0.2em] uppercase text-muted-foreground mb-20">
+        <p
+          className={`font-mono text-[9px] tracking-[0.2em] uppercase text-muted-foreground ${
+            params.id === "roadside-shrines-hong-kong" ? "mb-12" : "mb-20"
+          }`}
+        >
           {content.publication}
         </p>
 
         {/* Divider */}
-        <div className="w-16 h-px bg-foreground/20 mb-20" />
+        <div
+          className={`w-16 h-px bg-foreground/20 ${
+            params.id === "roadside-shrines-hong-kong" ? "mb-12" : "mb-20"
+          }`}
+        />
 
         {/* ── Text Excerpts ──────────────────────────────────── */}
         {content.excerpts.map((excerpt, i) => (
@@ -101,7 +110,7 @@ export default function ResearchDetailPage({
 
         {/* ── Visual Archive ─────────────────────────────────── */}
         {params.id === "roadside-shrines-hong-kong" && content.images.length > 0 && (
-          <div className="mb-24">
+          <div id="field-archive" className="scroll-mt-24 mb-24">
             <PhotoShuffler
               images={content.images}
               counterLabel={lang === "zh" ? "田野照片" : "Field photograph"}
@@ -139,7 +148,11 @@ export default function ResearchDetailPage({
         )}
 
         {/* Tags */}
-        <div className="flex flex-wrap gap-2 mb-32">
+        <div
+          className={`flex flex-wrap gap-2 ${
+            params.id === "roadside-shrines-hong-kong" ? "mb-12" : "mb-32"
+          }`}
+        >
           {project.tags.map((tag, i) => (
             <span
               key={i}
@@ -150,12 +163,27 @@ export default function ResearchDetailPage({
           ))}
         </div>
 
-        {/* ── Full Text Request ──────────────────────────────── */}
-        <div className="border-t border-foreground/10 pt-16 text-center">
-          <p className="font-mono text-[9px] tracking-[0.25em] uppercase text-muted-foreground/40 font-light">
-            Full text available upon request.
-          </p>
-        </div>
+        {params.id === "roadside-shrines-hong-kong" ? (
+          <>
+            <a
+              id="full-paper-cue"
+              href="#full-paper"
+              className="group mb-10 flex items-center justify-between border-y border-foreground/15 py-5 font-mono text-[9px] tracking-[0.22em] uppercase text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <span>{lang === "zh" ? "继续阅读 · 论文全文" : "Continue reading · Full paper"}</span>
+              <span className="text-base transition-transform duration-300 group-hover:translate-y-1" aria-hidden="true">
+                ↓
+              </span>
+            </a>
+            <PorousSacredPaper lang={lang} />
+          </>
+        ) : (
+          <div className="border-t border-foreground/10 pt-16 text-center">
+            <p className="font-mono text-[9px] tracking-[0.25em] uppercase text-muted-foreground/40 font-light">
+              Full text available upon request.
+            </p>
+          </div>
+        )}
 
       </div>
     </main>

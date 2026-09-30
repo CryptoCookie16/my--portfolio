@@ -26,7 +26,7 @@ export const workDetails: WorkDetail[] = [
     heroImage: "/images/creative/film/Capture One Catalog0048.jpg",
     en: {
       title: "Film Photography",
-      description: "Black and white analog photography shot on 35mm film.",
+      description: "",
       images: [
         { src: "/images/creative/film/Capture One Catalog0009.jpg" },
         { src: "/images/creative/film/Capture One Catalog0013.jpg" },
@@ -43,7 +43,7 @@ export const workDetails: WorkDetail[] = [
     },
     zh: {
       title: "胶片摄影",
-      description: "以35毫米胶卷拍摄的黑白模拟影像。",
+      description: "",
       images: [
         { src: "/images/creative/film/Capture One Catalog0009.jpg" },
         { src: "/images/creative/film/Capture One Catalog0013.jpg" },

@@ -65,9 +65,11 @@ export function CreativeWorkSection() {
                       <span className="block text-base italic group-hover:underline underline-offset-4 transition-all">
                         {project.title}
                       </span>
-                      <span className="font-mono text-[10px] tracking-[0.15em] uppercase text-muted-foreground block mt-1">
-                        {project.subtitle}
-                      </span>
+                      {project.subtitle && (
+                        <span className="font-mono text-[10px] tracking-[0.15em] uppercase text-muted-foreground block mt-1">
+                          {project.subtitle}
+                        </span>
+                      )}
                     </figcaption>
                   </figure>
                 </Link>

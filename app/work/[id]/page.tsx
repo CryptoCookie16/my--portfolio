@@ -142,16 +142,22 @@ export default function WorkDetailPage({
 
       {/* ── Title ────────────────────────────────────────────── */}
       <div className="max-w-2xl mx-auto px-6 pt-10 pb-16">
-        <h1 className="text-4xl md:text-5xl font-light tracking-wide mb-8">
+        <h1
+          className={`text-4xl md:text-5xl font-light tracking-wide ${
+            content.description ? "mb-8" : "mb-0"
+          }`}
+        >
           {content.title}
         </h1>
-        <div className="space-y-4">
-          {content.description.split("\n\n").map((para, i) => (
-            <p key={i} className="text-base leading-[1.9] text-foreground/80">
-              {para}
-            </p>
-          ))}
-        </div>
+        {content.description && (
+          <div className="space-y-4">
+            {content.description.split("\n\n").map((para, i) => (
+              <p key={i} className="text-base leading-[1.9] text-foreground/80">
+                {para}
+              </p>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* ── Collage ──────────────────────────────────────────── */}

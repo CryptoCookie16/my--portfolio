@@ -71,7 +71,7 @@ export const dict = {
         {
           id: "film-photography",
           title: "Film Photography",
-          subtitle: "Black and white analog photography shot on 35mm film.",
+          subtitle: "",
           filmType: "35mm",
           previewImage: "/images/creative/film/Capture One Catalog0033.jpg",
         },
@@ -139,7 +139,7 @@ export const dict = {
           title: "多孔的神圣空间",
           titleSub: "The Porous Sacred",
           description:
-            "正式硕士毕业项目《The Porous Sacred》，研究香港路边神龛如何在日常实践中形成多孔而持续的神圣空间。",
+            "硕士毕业项目《The Porous Sacred》，研究香港路边神龛如何在日常实践中形成多孔而持续的神圣空间。",
           tags: ["城市人类学", "空间研究", "宗教"],
         },
         {
@@ -176,7 +176,7 @@ export const dict = {
         {
           id: "film-photography",
           title: "胶片摄影",
-          subtitle: "以35毫米胶卷拍摄的黑白模拟影像。",
+          subtitle: "",
           filmType: "35mm",
           previewImage: "/images/creative/film/Capture One Catalog0033.jpg",
         },
