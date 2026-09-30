@@ -7,7 +7,7 @@ const creativeWorks = [
     id: "film-photography",
     type: "image",
     title: "Film Photography",
-    subtitle: "Black and white analog photography shot on 35mm film.",
+    subtitle: "",
     aspectRatio: "aspect-[3/4]",
     filmType: "35mm",
   },
