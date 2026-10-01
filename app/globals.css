@@ -2,6 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes fern-idle-sway {
+  0%, 100% { transform: rotate(-0.35deg) translateX(-1px); }
+  50% { transform: rotate(0.45deg) translateX(1px); }
+}
+
+.fern-idle {
+  animation: fern-idle-sway 6.5s ease-in-out infinite;
+}
+
+.fern-research-page {
+  --background: #050805;
+  --foreground: #eeeade;
+  --card: #0c110d;
+  --card-foreground: #eeeade;
+  --muted: #121914;
+  --muted-foreground: #9a9f94;
+  --border: #273029;
+  --input: #273029;
+  --primary: #eeeade;
+  --primary-foreground: #050805;
+  --secondary: #101611;
+  --secondary-foreground: #eeeade;
+  --ring: #b9c3ad;
+  background:
+    radial-gradient(circle at 82% 12%, rgba(46, 74, 45, 0.2), transparent 34rem),
+    #050805;
+  color: var(--foreground);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fern-idle {
+    animation: none;
+  }
+
+  .fern-hero * {
+    transition-duration: 0.01ms !important;
+  }
+}
+
 @layer base {
   :root {
     --background: #f7f3ea;

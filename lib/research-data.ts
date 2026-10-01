@@ -46,23 +46,19 @@ export const researchDetails: ResearchDetail[] = [
       quote: "",
       quoteSource: "",
       abstract:
-        "What happens when a man makes love to a fern — and then eats it? Zheng Bo's video installation Pteridophilia (2016–ongoing) stages exactly this encounter, filmed in the subtropical forests of Taiwan. At first glance, the work seems to offer a posthuman fantasy of liberated interspecies intimacy. On closer analysis, it raises harder questions about desire, use, and the limits of human perception.\n\nThis paper argues that the fern in Pteridophilia is not abstract nature. It is a historically situated plant — shaped by Indigenous Amis food knowledge, Japanese colonial botanical hierarchies, Kuomintang survival politics, and nationalist floral symbolism. By eroticizing a plant that Taiwanese audiences recognize as food, Zheng does not merely shock. He exposes how narrow the accepted forms of human-plant relation have become.\n\nThe paper's central claim is that the work offers neither a solution nor a celebration, but what I call proximity without appropriation: a practice of staying close to what cannot be fully known or possessed. To touch the fern is not to possess it. To desire the fern is not to know what it wants.",
+        "When I first encountered Pteridophilia, I was caught by a simple contradiction: the same fern could be touched with tenderness and then eaten. Why does eating a plant feel ordinary, while desiring it feels unsettling? That question became the starting point for this project. It led me beyond the artwork itself and toward the place in which it was filmed — and toward the many ways ferns already live within food, memory, and everyday life in Taiwan.\n\nAs the research developed, I became less interested in deciding whether the encounter was beautiful, strange, or provocative. I wanted to understand what becomes visible when appetite and desire occupy the same scene. Amis food and plant knowledge, botanical classifications shaped across different historical periods, experiences of migration and survival, and the plants that public culture remembers or overlooks all changed how I read the fern on screen. It was no longer simply “nature,” but a living presence with a specific history.\n\nWhat I ultimately want to hold onto is not a verdict but a way of staying with this discomfort. I call it proximity without appropriation: coming close to another form of life without assuming that closeness gives us knowledge or ownership. Touching a fern is not possessing it. Desiring it does not mean knowing what it wants.",
       publication: "Presented at the UCSD Department of Literature Graduate Conference, May 2026",
       excerpts: [],
-      images: [
-        { src: "", caption: "[Zheng Bo, Pteridophilia — still or documentation image]" },
-      ],
+      images: [],
     },
     zh: {
       quote: "",
       quoteSource: "",
       abstract:
-        "当一个人抚摸一株蕨类植物——然后将它吃掉，这意味着什么？郑波的录像装置《蕨恋》（2016年至今）在台湾的亚热带森林中拍摄，呈现了正是这样一种相遇。乍看之下，这件作品似乎提供了一种后人类式的跨物种亲密幻想。细读之下，它提出了更困难的问题：关于欲望、使用，以及人类感知的边界。\n\n本文认为，《蕨恋》中的蕨类植物并非抽象的「自然」。它是一种有历史位置的植物——被阿美族的饮食知识、日本殖民时期的植物学等级制度、国民党的生存政治，以及民族主义的花卉象征所共同塑造。通过将台湾观众熟悉的食用植物情色化，郑波不只是在制造震惊——他揭示了人类与植物之间被接受的关系形式是多么狭窄。\n\n本文的核心主张是：这件作品既不提供解决方案，也不构成庆祝，而是提供一种我称之为「接近而不占有」（proximity without appropriation）的伦理姿态——一种与无法被完全认知或占有之物保持靠近的实践。触碰蕨类，并不意味着拥有它。渴望蕨类，并不意味着知道它想要什么。",
+        "第一次看到《蕨恋》时，我感到不安：同一株蕨类，可以被温柔地抚摸，随后又被吃掉。为什么进食显得如此日常，欲望却让人不安？这个问题成了这次研究的起点。\n\n它让我慢慢从作品本身往外走，开始关注拍摄发生的地方，以及蕨类原本就如何存在于人们的食物、记忆与日常生活里。乍看之下，这件作品似乎提供了一种后人类时代乌托邦式的跨物种亲密幻想。然而细读之下，它提出了更困难的问题：关于人类感知与权利的边界。\n\n阿美族的饮食与植物知识、不同历史时期形成的植物分类、迁徙中的生存经验，以及公共文化对某些植物的记住与忽略，都改变了我观看画面中那株蕨类的方式。它不再只是抽象的“自然”，而是一种有具体来处的生命。\n\n人类与植物之间被接受的关系形式是如此狭窄，也许这件作品既不提供解决方案，也不构成庆祝，而是提供一种我称之为「接近而不占有」的伦理姿态：靠近另一种生命，却不假定靠近就等于理解或拥有。",
       publication: "发表于2026年5月加州大学圣地亚哥分校文学系研究生学术会议",
       excerpts: [],
-      images: [
-        { src: "", caption: "【郑波，《蕨恋》——静帧或现场文献图像】" },
-      ],
+      images: [],
     },
   },
   {

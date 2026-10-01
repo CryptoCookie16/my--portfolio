@@ -7,6 +7,8 @@ import { useLang } from "@/lib/lang-context"
 import { getResearchDetail } from "@/lib/research-data"
 import { PhotoShuffler } from "@/components/photo-shuffler"
 import { PorousSacredPaper } from "@/components/porous-sacred-paper"
+import { FernResearchStory } from "@/components/fern-research-story"
+import { InteractiveFernHero } from "@/components/interactive-fern-hero"
 
 export default function ResearchDetailPage({
   params,
@@ -30,7 +32,11 @@ export default function ResearchDetailPage({
   const content = detail[lang]
 
   return (
-    <main className="pt-24 pb-40 px-6">
+    <main
+      className={`min-h-screen pt-24 pb-40 px-6 ${
+        params.id === "where-ferns-touch-flesh" ? "fern-research-page" : ""
+      }`}
+    >
       <Navigation />
       <div className="max-w-2xl mx-auto">
 
@@ -45,19 +51,23 @@ export default function ResearchDetailPage({
         </div>
 
         {/* ── Header ─────────────────────────────────────────── */}
-        <div className="mb-20">
-          <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-muted-foreground block mb-3">
-            No. {project.number}
-          </span>
-          <h1 className="text-4xl md:text-5xl font-light tracking-wide leading-tight mb-2">
-            {project.title}
-          </h1>
-          {project.titleSub && (
-            <p className="text-xl text-muted-foreground font-light tracking-[0.1em]">
-              {project.titleSub}
-            </p>
-          )}
-        </div>
+        {params.id === "where-ferns-touch-flesh" ? (
+          <InteractiveFernHero project={project} />
+        ) : (
+          <div className="mb-20">
+            <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-muted-foreground block mb-3">
+              No. {project.number}
+            </span>
+            <h1 className="text-4xl md:text-5xl font-light tracking-wide leading-tight mb-2">
+              {project.title}
+            </h1>
+            {project.titleSub && (
+              <p className="text-xl text-muted-foreground font-light tracking-[0.1em]">
+                {project.titleSub}
+              </p>
+            )}
+          </div>
+        )}
 
         {/* ── Field Quote ────────────────────────────────────── */}
         {content.quote && (
@@ -94,8 +104,10 @@ export default function ResearchDetailPage({
           }`}
         />
 
+        {params.id === "where-ferns-touch-flesh" && <FernResearchStory lang={lang} />}
+
         {/* ── Text Excerpts ──────────────────────────────────── */}
-        {content.excerpts.map((excerpt, i) => (
+        {params.id !== "where-ferns-touch-flesh" && content.excerpts.map((excerpt, i) => (
           <div key={i} className="mb-20">
             {excerpt.label && (
               <span className="font-mono text-[9px] tracking-[0.25em] uppercase text-muted-foreground block mb-8">
@@ -118,7 +130,7 @@ export default function ResearchDetailPage({
           </div>
         )}
 
-        {params.id !== "roadside-shrines-hong-kong" && content.images.length > 0 && (
+        {params.id !== "roadside-shrines-hong-kong" && params.id !== "where-ferns-touch-flesh" && content.images.length > 0 && (
           <div className="mb-20">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               {content.images.map((img, i) => (
@@ -180,7 +192,7 @@ export default function ResearchDetailPage({
         ) : (
           <div className="border-t border-foreground/10 pt-16 text-center">
             <p className="font-mono text-[9px] tracking-[0.25em] uppercase text-muted-foreground/40 font-light">
-              Full text available upon request.
+              {lang === "zh" ? "完整文本可按需提供。" : "Full text available upon request."}
             </p>
           </div>
         )}

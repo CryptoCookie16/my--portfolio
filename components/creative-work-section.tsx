@@ -61,15 +61,13 @@ export function CreativeWorkSection() {
                         )}
                       </div>
                     </div>
-                    <figcaption className="mt-4">
-                      <span className="block text-base italic group-hover:underline underline-offset-4 transition-all">
+                    <figcaption className="mt-5">
+                      <span className="block mb-2 font-mono text-[9px] tracking-[0.18em] uppercase text-muted-foreground">
+                        {project.filmType}
+                      </span>
+                      <span className="block text-xl md:text-2xl font-normal leading-tight tracking-wide group-hover:underline underline-offset-4 transition-all">
                         {project.title}
                       </span>
-                      {project.id !== "film-photography" && project.subtitle && (
-                        <span className="font-mono text-[10px] tracking-[0.15em] uppercase text-muted-foreground block mt-1">
-                          {project.subtitle}
-                        </span>
-                      )}
                     </figcaption>
                   </figure>
                 </Link>
