@@ -3,6 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Navigation } from "@/components/navigation"
+import { ZineFlipbook } from "@/components/zine-flipbook"
 import { useLang } from "@/lib/lang-context"
 import { getWorkDetail } from "@/lib/work-data"
 
@@ -47,6 +48,7 @@ export default function WorkDetailPage({
   const content = detail[lang]
   const essay = detail.essay
   const isFilmPhotography = detail.id === "film-photography"
+  const isFieldFermentZine = detail.id === "field-ferment-zine"
 
   const filmRows = isFilmPhotography
     ? [
@@ -379,7 +381,13 @@ export default function WorkDetailPage({
         )
       )}
 
-      {/* ── Embed ────────────────────────────────────────────── */}
+      {isFieldFermentZine && (
+        <div className="mx-auto mt-24 px-3 sm:px-6">
+          <ZineFlipbook />
+        </div>
+      )}
+
+      {/* ── Legacy embeds ────────────────────────────────────── */}
       {detail.embedCode && (
         <div
           className="max-w-4xl mx-auto px-6 mt-32"

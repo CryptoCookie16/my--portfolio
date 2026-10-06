@@ -101,7 +101,6 @@ export const workDetails: WorkDetail[] = [
       { src: "/images/creative/Zine/zine2.png", rotate: 2 },
       { src: "/images/creative/Zine/zine3.png", rotate: -1.5 },
     ],
-    embedCode: `<div style="position:relative;padding-top:max(60%,324px);width:100%;height:0;"><iframe style="position:absolute;border:none;width:100%;height:100%;left:0;top:0;" src="https://online.fliphtml5.com/JMMZine/yyqt/" title="January, March, March; A Farm Working Zine_compressed" seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" ></iframe></div>`,
     en: {
       title: "Field & Ferment Zine: January, March, March",
       description: "January, March, March is a food ethnography zine I independently conceived, photographed, wrote, and designed. It grew out of three rounds of participant fieldwork: working at Duke Campus Farm, sitting down for an in-depth interview with a Chinese ecological farmer, and gathering first-hand text and images along the way. A second thread, “Food That Refuses Standardization,” follows homemade infused liquor in Yunnan and Shanghai, placing those observations beside questions of U.S. food regulation and Indigenous food sovereignty. The finished zine spans more than thirty spreads, bringing field notes, interviews, photographs, and visual design into one personal record.",
