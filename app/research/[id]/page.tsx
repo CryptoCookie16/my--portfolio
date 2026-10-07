@@ -128,16 +128,25 @@ export default function ResearchDetailPage({
         ))}
 
         {/* ── Visual Archive ─────────────────────────────────── */}
-        {params.id === "roadside-shrines-hong-kong" && content.images.length > 0 && (
+        {(params.id === "roadside-shrines-hong-kong" || params.id === "remapping-yunnan") && content.images.length > 0 && (
           <div id="field-archive" className="scroll-mt-24 mb-24">
             <PhotoShuffler
               images={content.images}
-              counterLabel={lang === "zh" ? "田野照片" : "Field photograph"}
+              counterLabel={
+                params.id === "remapping-yunnan"
+                  ? lang === "zh"
+                    ? "云南田野照片"
+                    : "Yunnan field photograph"
+                  : lang === "zh"
+                    ? "田野照片"
+                    : "Field photograph"
+              }
+              aspect={params.id === "remapping-yunnan" ? "3/2" : "4/3"}
             />
           </div>
         )}
 
-        {params.id !== "roadside-shrines-hong-kong" && params.id !== "where-ferns-touch-flesh" && content.images.length > 0 && (
+        {params.id !== "roadside-shrines-hong-kong" && params.id !== "where-ferns-touch-flesh" && params.id !== "remapping-yunnan" && content.images.length > 0 && (
           <div className="mb-20">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               {content.images.map((img, i) => (

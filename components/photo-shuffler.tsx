@@ -11,9 +11,11 @@ type ShufflerImage = {
 export function PhotoShuffler({
   images,
   counterLabel,
+  aspect = "4/3",
 }: {
   images: ShufflerImage[]
   counterLabel: string
+  aspect?: "4/3" | "3/2"
 }) {
   const [activeIndex, setActiveIndex] = useState(0)
 
@@ -25,7 +27,11 @@ export function PhotoShuffler({
 
   return (
     <div className="mx-auto max-w-2xl">
-      <div className="relative mb-9 aspect-[4/3] mx-3 sm:mx-7">
+      <div
+        className={`relative mb-9 mx-3 sm:mx-7 ${
+          aspect === "3/2" ? "aspect-[3/2]" : "aspect-[4/3]"
+        }`}
+      >
         {[2, 1].map((offset) => {
           const image = images[(activeIndex + offset) % images.length]
           return (
