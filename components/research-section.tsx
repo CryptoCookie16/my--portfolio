@@ -24,7 +24,7 @@ const cardVisuals: Record<
     fallback:
       "radial-gradient(circle at 78% 22%, rgba(196,181,194,.32), transparent 35%), radial-gradient(circle at 18% 82%, rgba(116,129,139,.32), transparent 42%), linear-gradient(135deg, #69636b 0%, #3f4349 100%)",
   },
-  "fern-fieldwork": {
+  "remapping-yunnan": {
     image: "/images/research/cards/fern-fieldwork.jpg",
     position: "center 48%",
     overlay: "bg-[#172014]/64 group-hover:bg-[#172014]/56",

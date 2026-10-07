@@ -20,23 +20,55 @@ export type ResearchDetail = {
 
 export const researchDetails: ResearchDetail[] = [
   {
-    id: "fern-fieldwork",
+    id: "remapping-yunnan",
     en: {
       quote: "",
       quoteSource: "",
       abstract:
-        "This preliminary field research took place in the high-altitude forests of Gaoligong Mountain, Yunnan Province; its final form is still open. It treats ferns as active participants in the world rather than passive botanical specimens — tracing the entanglements between plant life, moisture, altitude, and the people who move through this terrain. Drawing on sensory ethnography and more-than-human theory, the research asks what it means to do fieldwork alongside non-human others, rather than about them.",
-      publication: "",
-      excerpts: [],
+        "Located in Southwest China and bordering Myanmar, Laos, and Vietnam, Yunnan is one of China’s most ethnically diverse provinces. However, Yunnan often gets compressed into a limited set of romanticized, idealized images: “Shangri-La,” scenic tourism, ethnic spectacle, a short list of signature dishes such as rice noodles. Rather than attempting to offer a set of identities associated with Yunnan, this project asks how Yunnan takes shape through movements, memories, displacements, and multi-sensory experiences beyond its geographic confines.\n\nWhen, where, and through what forms of practices can we feel/sense Yunnan?\n\nThe project started through a series of encounters—among the Yunnanese students and others who feel connected to/interested in Yunnan—at Duke. From these encounters emerged a shared interest in how relationships to place are maintained and transformed through gathering, growing, cooking, pickling, fermenting, listening, finding substitutes away from home, exchanging recipes, and sharing food and stories.\n\n“Mapping” does not primarily refer to cartographic representation. Instead, we take mapping as a practice of exploring relations across spaces/places, materials, bodies, memories, and routes of circulation.\n\nSituated between artistic practices, ethnographic inquiries, and community collaborations, we foreground situated and embodied forms of (scholarly) knowledge transduced across Yunnan rather than comprehensive or authoritative narratives about Yunnan. The exhibition may include but not limited to artworks, photographs, field recordings, oral histories, recipes, food-related objects, maps, moving images, sound installations, writings, and participatory tasting or listening activities.",
+      publication: "Collaborative curatorial and ethnographic project, ongoing · Opening February 2027",
+      excerpts: [
+        {
+          label: "Diaspora Pantry",
+          body:
+            "We invite people currently living in the United States who are from Yunnan or have family ties to Yunnan to contribute one of the following four types of items: a kitchen utensil, a photograph, a one- or two-minute voice message, or an ingredient that is hard to find locally and for which you’ve had to find a substitute. We especially welcome pickled or fermented foods.\n\nA jar of pickled vegetables or fermented chili sauce, having traveled across continents over the course of several years, not only brings the name of one place to another but also embodies the maker’s efforts to continually recreate the flavors of home in a new kitchen. Each exhibit will be presented alongside the contributor’s narrative, covering the item’s origin, how it is used, and the changes it has undergone since leaving its homeland.",
+        },
+        {
+          label: "Substitution Atlas",
+          body:
+            "If the “Diaspora Pantry” above focuses on the things people “preserve,” then the “Substitution Atlas” focuses on the things that cannot be preserved. For several Yunnan ingredients that are hard to find in the United States, this atlas documents information on three levels: the appearance of the original Yunnan ingredients; the substitutes used by Yunnan chefs in the U.S.; and the resulting changes to the dishes. Take Yunnan ham, for example—it serves as the foundation for dishes such as copper-pot potato rice or white kidney beans stewed with ham. Because pork products from China face strict restrictions when entering the United States, chefs often turn to Italian prosciutto or local country-style ham instead. How does this substitution alter the dish’s flavor? Can this dish still be considered the original dish?\n\nThe atlas’s first batch of entries serves as a starting point: for example, tree tomatoes, Erkuai, Rushan, and Yunnan ham. The atlas aims to map out various connections rather than judge authenticity.",
+        },
+        {
+          label: "Listening with Yunnan",
+          body:
+            "One component approaches Yunnan through practices of listening and musical circulation. A curated selection of albums, recordings, and other musical releases connected to Yunnan would function as a point of entry into different histories, places, and communities. A second component invites contributors to creatively interpret their relationships to Yunnan through composition, sound collage, field recording, or other listening pieces. These works may respond to memories, movements, distances, substitutions, encounters, or imagined relationships to place, while gathering everyday sonic materials such as voice memos, field recordings, interviews, and spoken words.",
+        },
+      ],
       images: [],
     },
     zh: {
       quote: "",
       quoteSource: "",
       abstract:
-        "这项前期田野研究发生在云南省高黎贡山高海拔森林地带，最终产出形式仍待确定。研究将蕨类植物视为积极参与世界的主体，而非被动的植物标本——追踪植物生命、水分、海拔与穿行于此地的人群之间的缠绕关系，并尝试「与」非人类他者一同田野，而非只进行「关于」它们的研究。",
-      publication: "",
-      excerpts: [],
+        "云南是中国民族与生态最为多样的省份之一，与缅甸、老挝、越南接壤。但在大众想象里，它常被压缩成一小串固定的形象：香格里拉、风景旅游、民族景观、几道招牌菜。这个项目不打算用另一套更“权威”的身份叙述去纠正这些形象，而是想问：云南是如何通过流动、记忆、迁移和感官经验，在其地理边界之外成形的？\n\n贯穿项目的问题很简单：我们在何时、何地、通过哪些实践感受到云南？\n\n项目起于杜克大学里的相遇：几位云南学生，以及与云南有连结的人。在交谈中，一个共同的兴趣反复浮现：离开家之后，人们如何通过采集、种植、烹饪、腌制、发酵、聆听、寻找替代品、交换食谱、分享食物和故事，来维系并改变与地方的关系。因此我们的“田野”不是云南本身，而是云南的延伸：厨房、超市、网购渠道、微信群、歌单，以及那些把云南带在身边的人的家。\n\n这里的“（制）地图”主要不是地图学意义上的再现，而是一种追踪实践：追踪地方、物质、身体、记忆与流通路线之间的关系。一罐跨越大陆的泡菜或发酵辣酱，带来的不只是一个地名，也记录着制作者在新厨房里一次次重建家乡味道的劳动。我们关心的是，这样的物与实践如何让依恋、距离与时间变得可见。\n\n项目处于艺术实践、民族志研究与社群合作之间。我们优先呈现具体的、身体性的知识，而不是关于云南的全面或权威叙述。参与者不是被采集和被解释的“报告人”，而是共同讲述云南的作者。最终的展览可能包括艺术作品、照片、田野录音、口述史、食谱、物件、地图、动态影像、声音作品、文字，以及参与式的品尝与聆听活动。具体形式仍然开放，并会随参与者的介入而改变。",
+      publication: "策展与民族志合作项目，进行中 · 预计于2027年2月开幕",
+      excerpts: [
+        {
+          label: "一、离散的储藏间",
+          body:
+            "第一条线索关注人们带来、留存、照料的东西：一件厨具、一张照片、一条来自家里的语音、一份照料多年的发酵食物。我们尤其被腌制与发酵食物吸引，因为发酵是一种保存，同时也是一种改变。它需要时间、照料和活的微生物，在新的地方，结果从来不会完全一样。这条线索的工作概念是“离散食橱”。",
+        },
+        {
+          label: "二、代替品图谱",
+          body:
+            "第二条线索转向那些无法随身携带的东西：难以买到、受到限制、或一过边界就变得不同的食材。云南火腿就是一个例子。它是锅子洋芋饭等菜的底味，而在国外，厨师常常用意大利火腿或本地乡村火腿替代。这会如何改变味道，又如何改变一道菜的意义？它还是原来的那道菜吗？我们不关心真假之分，而是想描绘替代所建立的联系：食材、厨师、商店与记忆之间的联系。这条线索的工作概念是“替代图集”。",
+        },
+        {
+          label: "三、云南声音",
+          body:
+            "第三条线索通过聆听与音乐流通来接近云南：专辑、录音、唱片文案、田野录音、语音留言、口述片段。它既是一种策展式的聆听实践，也邀请参与者通过作曲、拼贴或其他声音作品来诠释自己与云南的关系。声音让我们能够追问地方中难以被看见的部分：气氛、节奏、距离、等待。",
+        },
+      ],
       images: [],
     },
   },

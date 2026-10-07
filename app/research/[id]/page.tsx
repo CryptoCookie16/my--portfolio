@@ -114,9 +114,16 @@ export default function ResearchDetailPage({
                 {excerpt.label}
               </span>
             )}
-            <p className="text-base leading-[2.1] text-foreground/75 max-w-prose">
-              {excerpt.body}
-            </p>
+            <div className="space-y-5">
+              {excerpt.body.split("\n\n").map((paragraph, paragraphIndex) => (
+                <p
+                  key={paragraphIndex}
+                  className="text-base leading-[2.1] text-foreground/75 max-w-prose"
+                >
+                  {paragraph}
+                </p>
+              ))}
+            </div>
           </div>
         ))}
 
