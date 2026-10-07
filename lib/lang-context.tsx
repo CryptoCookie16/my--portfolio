@@ -19,9 +19,9 @@ export const dict = {
     about: {
       sectionTitle: "About",
       bio: "detouring the world",
-      p1: "Currently an MA student in Liberal Arts at Duke University. My academic interests drift between the politics of space, everyday rituals, and multispecies studies—focusing on existence omitted by formal narratives. I have written on the thresholds of roadside shrines in Hong Kong, an inquiry synthesizing five years of lived memories and observation within the city. Recently, turning my attention toward non-humans and the land, I independently published the digital ethnographic zine January, March, March (Spring 2026), documenting everyday fragments of multispecies coexistence on ecological farms through tactile and embodied writing; my project Where Ferns Touch Flesh explores posthuman intimacy beyond human boundaries and was presented at UC San Diego in the same year.",
-      p2: `My creative practice is an extension of my academic inquiry—another language for it. I write creative non-fiction, shoot black-and-white film, craft zines, and appear at markets and street corners with “Poetry Tarot.” Bi-literate in Chinese and English, I have worked across brand PR, publishing, and media organizations.`,
-      p3: "They are all my beloved detours.",
+      p1: "What if we kept paying attention to the lives and presences left out of official narratives? Plants encountered anew, food practices, poetry; tiny shrines nestled into bustling streets; a Chinese ecological farm appearing, unexpectedly, in a suburb across the ocean.\n\nWhat if erosion, breakage, and decay—rather than novelty, growth, and progress—became the ground from which we thought about the relationship between society and technology? Ruins, patches, old cassette tapes, or the unsettling smells of fermented food?",
+      p2: "In spring 2026, I independently made the digital ethnographic zine January, March, March, using embodied, multisensory writing to record everyday scenes of multispecies coexistence on a farm.\n\nWhere Ferns Touch Flesh explores forms of intimacy that cross species boundaries and decenter the human. I presented the project at the University of California, San Diego later that year.\n\nSome of my creative work grows out of these ideas too: short writings, black-and-white film photographs, zines, and a tarot deck of my own...",
+      p3: "They are all my beloved side paths.",
     },
     research: {
       sectionTitle: "Research",
@@ -125,8 +125,8 @@ export const dict = {
     about: {
       sectionTitle: "关于",
       bio: "走小径",
-      p1: "目前在杜克大学修读人文学科硕士。我的学术兴趣游走于空间政治、日常仪式与多物种研究之间——关注那些被正式叙述遗漏的存在。曾写过关于香港路边神龛的研究，那篇文章融合了我在这座城市生活五年的记忆与观察。最近，我将目光投向非人类与土地：2026年春季独立制作了电子民族志Zine《January, March, March》，以具身、触觉的书写记录生态农场中多物种共生的日常片段；课题《Where Ferns Touch Flesh》则探讨超越人类界限的后人类亲密关系，并于同年在加州大学圣地亚哥分校发表。",
-      p2: "我的创作是学术思考的延伸，也是它的另一种语言。我写创意非虚构，拍黑白胶片，做zine，带着「诗塔罗」出现在市集和街角。具备中英双语写作能力，曾供职于品牌公关、出版与媒体机构。",
+      p1: "要常常关注那些被正式叙述遗漏的存在吗？比如重新发现植物、饮食实践、诗歌、繁华街巷里跻身而在的小小神龛、跨越大洋的郊区里竟然有华人生态农场。\n\n要试试以“侵蚀、破损与衰败”而非“新颖性、增长与进步”作为思考社会与技术关系的基础吗？比如废墟、补丁、旧磁带、发酵食品令人感到不悦的味道？",
+      p2: "于是在2026年春季独立制作了电子民族志Zine《January, March, March》，试图以具身的、多感官的书写记录农场中多物种共生的日常片段。\n\n课题《Where Ferns Touch Flesh》则探讨超越物种界限后，去人类中心主义的亲密关系，并于同年在加州大学圣地亚哥分校发表。\n\n一些创作也由这些理论延展而出：小文，黑白胶片，zine，自创塔罗...",
       p3: "她们都是我心爱的小径。",
     },
     research: {

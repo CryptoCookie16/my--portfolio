@@ -3,7 +3,7 @@
 import { useLang } from "@/lib/lang-context"
 
 export function AboutSection() {
-  const { lang, t } = useLang()
+  const { t } = useLang()
 
   return (
     <section id="about" className="min-h-screen flex items-center px-6 py-32">
@@ -27,34 +27,9 @@ export function AboutSection() {
 
         {/* Body paragraphs */}
         <div className="space-y-6 text-base leading-[1.95] text-muted-foreground">
-          {lang === "en" ? (
-            <>
-              <p>
-                Currently an MA student in Liberal Arts at Duke University. My academic interests
-                drift between the politics of space, everyday rituals, and multispecies
-                studies—focusing on existence omitted by formal narratives. I have written on the
-                thresholds of roadside shrines in Hong Kong, an inquiry synthesizing five years of
-                lived memories and observation within the city. Recently, turning my attention toward
-                non-humans and the land, I independently published the digital ethnographic zine{" "}
-                <em>January, March, March</em> (Spring 2026), documenting everyday fragments of
-                multispecies coexistence on ecological farms through tactile and embodied writing;
-                my project <em>Where Ferns Touch Flesh</em> explores posthuman intimacy beyond
-                human boundaries and was presented at UC San Diego in the same year.
-              </p>
-              <p>
-                My creative practice is an extension of my academic inquiry—another language for
-                it. I write creative non-fiction, shoot black-and-white film, craft zines, and
-                appear at markets and street corners with{" "}
-                <span className="italic">&ldquo;Poetry Tarot.&rdquo;</span> Bi-literate in Chinese
-                and English, I have worked across brand PR, publishing, and media organizations.
-              </p>
-            </>
-          ) : (
-            <>
-              <p>{t.about.p1}</p>
-              <p>{t.about.p2}</p>
-            </>
-          )}
+          {[t.about.p1, t.about.p2]
+            .flatMap((text) => text.split("\n\n"))
+            .map((paragraph, index) => <p key={index}>{paragraph}</p>)}
         </div>
 
         {/* Closing line */}
