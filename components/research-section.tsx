@@ -33,6 +33,9 @@ const cardVisuals: Record<
 
 export function ResearchSection() {
   const { t } = useLang()
+  const visibleProjects = t.research.projects.filter(
+    (project) => project.id !== "waiting-for-a-diagnosis"
+  )
 
   return (
     <section id="research" className="min-h-screen px-6 py-32">
@@ -48,7 +51,7 @@ export function ResearchSection() {
 
         {/* Research grid */}
         <div className="grid md:grid-cols-2 gap-8">
-          {t.research.projects.map((project) => {
+          {visibleProjects.map((project) => {
             const visual = cardVisuals[project.id]
 
             return (
