@@ -83,7 +83,10 @@ export default function WorkDetailPage({
         </div>
 
         {/* Essay content */}
-        <article style={{ maxWidth: "58%", margin: "0 auto", padding: "0 0 4rem" }}>
+        <article
+          className={lang === "zh" ? "essay-copy--zh" : undefined}
+          style={{ maxWidth: "58%", margin: "0 auto", padding: "0 0 4rem" }}
+        >
           <h1
             style={{
               fontSize: "clamp(2rem, 4vw, 3rem)",
@@ -109,7 +112,7 @@ export default function WorkDetailPage({
                     marginBottom: "2em",
                     fontSize: isList ? "0.88rem" : "1rem",
                     color: isList ? "rgba(30,25,20,0.6)" : "rgba(30,25,20,0.85)",
-                    fontFamily: isList ? "monospace" : "inherit",
+                    fontFamily: lang === "zh" ? "inherit" : isList ? "monospace" : "inherit",
                     whiteSpace: "pre-line",
                   }}
                   className={i === 0 ? "drop-cap" : ""}
