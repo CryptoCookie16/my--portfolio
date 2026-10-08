@@ -69,6 +69,23 @@ export const dict = {
       sectionTitle: "Creative Work",
       projects: [
         {
+          id: "eulogy-for-breathing",
+          title: "Eulogy for Breathing",
+          subtitle:
+            "Personal writing and independent publishing shaped through sensory observation and a self-designed Smell Rehabilitation Checklist.",
+          filmType: "Creative Nonfiction",
+          previewImage: "/images/creative/breathing.JPG",
+        },
+        {
+          id: "field-ferment-zine",
+          title: "January, March, March",
+          subtitle:
+            "Independently conceived and produced through field research, in-depth interviews, photography, writing, and the editorial design of 30+ spreads.",
+          filmType: "Food Ethnography Zine",
+          previewImage: "/images/creative/Zine/january-march-march-mockup.png",
+          previewFull: true,
+        },
+        {
           id: "film-photography",
           title: "Film Photography Portfolio",
           subtitle: "",
@@ -82,23 +99,6 @@ export const dict = {
             "Founder and project lead: designed the participatory experience, visual identity, and on-site installation; welcomed 60+ visitors over two days.",
           filmType: "Public Interactive Art Project",
           previewImage: "/images/creative/POEM TAROT/8012.jpg",
-        },
-        {
-          id: "field-ferment-zine",
-          title: "January, March, March",
-          subtitle:
-            "Independently conceived and produced through field research, in-depth interviews, photography, writing, and the editorial design of 30+ spreads.",
-          filmType: "Food Ethnography Zine",
-          previewImage: "/images/creative/Zine/january-march-march-mockup.png",
-          previewFull: true,
-        },
-        {
-          id: "eulogy-for-breathing",
-          title: "Eulogy for Breathing",
-          subtitle:
-            "Personal writing and independent publishing shaped through sensory observation and a self-designed Smell Rehabilitation Checklist.",
-          filmType: "Creative Nonfiction",
-          previewImage: "/images/creative/breathing.JPG",
         },
       ],
     },
@@ -175,6 +175,21 @@ export const dict = {
       sectionTitle: "创作",
       projects: [
         {
+          id: "eulogy-for-breathing",
+          title: "《呼吸悼词》",
+          subtitle: "个人写作与独立出版：以感官观察和自制气味康复清单展开叙事。",
+          filmType: "创意非虚构写作",
+          previewImage: "/images/creative/breathing.JPG",
+        },
+        {
+          id: "field-ferment-zine",
+          title: "《January, March, March》",
+          subtitle: "独立策划与制作：田野调研、深度访谈、摄影、撰稿与 30+ 跨页的版式设计。",
+          filmType: "食物民族志 Zine",
+          previewImage: "/images/creative/Zine/january-march-march-mockup.png",
+          previewFull: true,
+        },
+        {
           id: "film-photography",
           title: "胶片摄影作品集",
           subtitle: "",
@@ -187,21 +202,6 @@ export const dict = {
           subtitle: "项目发起与独立策划：设计互动体验、视觉系统与现场陈设，两天接待 60+ 人次。",
           filmType: "公共互动艺术项目",
           previewImage: "/images/creative/POEM TAROT/8012.jpg",
-        },
-        {
-          id: "field-ferment-zine",
-          title: "《January, March, March》",
-          subtitle: "独立策划与制作：田野调研、深度访谈、摄影、撰稿与 30+ 跨页的版式设计。",
-          filmType: "食物民族志 Zine",
-          previewImage: "/images/creative/Zine/january-march-march-mockup.png",
-          previewFull: true,
-        },
-        {
-          id: "eulogy-for-breathing",
-          title: "《呼吸悼词》",
-          subtitle: "个人写作与独立出版：以感官观察和自制气味康复清单展开叙事。",
-          filmType: "创意非虚构写作",
-          previewImage: "/images/creative/breathing.JPG",
         },
       ],
     },
