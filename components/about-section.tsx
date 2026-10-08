@@ -24,7 +24,7 @@ export function AboutSection() {
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "linear-gradient(to bottom, #f7f3ea 0%, rgba(247,243,234,0.94) 8%, rgba(247,243,234,0.62) 24%, rgba(247,243,234,0.30) 48%, rgba(247,243,234,0.40) 100%)",
+            "linear-gradient(to bottom, #f7f3ea 0%, rgba(247,243,234,0.94) 8%, rgba(247,243,234,0.62) 24%, rgba(247,243,234,0.30) 48%, rgba(247,243,234,0.30) 68%, rgba(247,243,234,0.68) 82%, rgba(247,243,234,0.93) 94%, #f7f3ea 100%)",
         }}
         aria-hidden="true"
       />
