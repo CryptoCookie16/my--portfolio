@@ -3,10 +3,9 @@
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react"
 import type { PageFlip as PageFlipInstance } from "page-flip"
 
-// 003 duplicates the cover and 014 is an unintended blank export.
-const PAGE_FILES = [1, 2, ...Array.from({ length: 63 }, (_, index) => index + 4)].filter(
-  (pageNumber) => pageNumber !== 14
-)
+// 002 is an extra blank before Chapter One and 003 repeats the cover.
+// Keep later blank pages: they are intentional parts of the designed spreads.
+const PAGE_FILES = [1, ...Array.from({ length: 63 }, (_, index) => index + 4)]
 const PAGE_COUNT = PAGE_FILES.length
 const PAGE_ROOT = "/zine/january-march-march/pages"
 
