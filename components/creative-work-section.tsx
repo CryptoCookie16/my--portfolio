@@ -5,8 +5,8 @@ import Image from "next/image"
 import { useLang } from "@/lib/lang-context"
 
 const workLayout = [
-  { aspectRatio: "aspect-[3/4]",  colClass: "md:col-span-7",                        alignClass: "" },
-  { aspectRatio: "aspect-[2/3]",  colClass: "md:col-span-5 flex items-end",          alignClass: "w-full" },
+  { aspectRatio: "aspect-[4/3]",  colClass: "md:col-span-5 md:pt-8",                 alignClass: "" },
+  { aspectRatio: "aspect-[2/3]",  colClass: "md:col-span-7 flex items-end",          alignClass: "w-full" },
   { aspectRatio: "aspect-[4/3]",  colClass: "md:col-span-5 flex items-start md:pt-8", alignClass: "w-full" },
   { aspectRatio: "aspect-[1/1]",  colClass: "md:col-span-7",                        alignClass: "" },
 ]
