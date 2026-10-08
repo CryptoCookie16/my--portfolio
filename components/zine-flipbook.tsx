@@ -8,6 +8,7 @@ import type { PageFlip as PageFlipInstance } from "page-flip"
 const PAGE_FILES = [1, ...Array.from({ length: 63 }, (_, index) => index + 4)]
 const PAGE_COUNT = PAGE_FILES.length
 const PAGE_ROOT = "/zine/january-march-march/pages"
+const BLANK_PAGE_NUMBERS = new Set([62])
 
 function pageUrl(index: number) {
   return `${PAGE_ROOT}/${String(PAGE_FILES[index]).padStart(3, "0")}.webp`
@@ -144,14 +145,18 @@ export function ZineFlipbook() {
               className="zine-reader__page"
               data-density={index === 0 || index === PAGE_COUNT - 1 ? "hard" : "soft"}
             >
-              {/* The source files are already optimized book-page renders. */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={src}
-                alt={`January, March, March，第 ${index + 1} 页`}
-                draggable={false}
-                loading={index < 5 ? "eager" : "lazy"}
-              />
+              {!BLANK_PAGE_NUMBERS.has(index + 1) && (
+                <>
+                  {/* The source files are already optimized book-page renders. */}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={src}
+                    alt={`January, March, March，第 ${index + 1} 页`}
+                    draggable={false}
+                    loading={index < 5 ? "eager" : "lazy"}
+                  />
+                </>
+              )}
             </div>
           ))}
         </div>
